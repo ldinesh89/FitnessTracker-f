@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<meta name="theme-color" content="#a855f7"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="apple-mobile-web-app-title" content="GlowTracker"/>
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAH3ElEQVR4nO2dXW9UVRSG92nmT3BhYmJU1IBEL7HyYWICZ2ZKL7jwB6qAwpTSoigUENAEgUIthVagWC/6E7w8XhyGlGE+zpyzP9Ze+3mSlUAh56yz9ztv1157z0x25vR/JiBFyJuDM7JQN26ZwqumEHAaDM6zN4G3PGgMEcNeDTgVd8vh1REyDKOvCyfSc+HQCBmq4ETYLYvXQshQB6vCbmV2dIiYoSmFsSDqpg6NkMEmjd26iUMjZnBFbbeeaXBDAJfU0lidLgdiBl9M7dTT9qERM/hmKlFP49CIGUJRWdRVa2jEDKGppMFWNvlwEmIGKUx06kkOjZhBGmM1aWunEEAE4xwapYNURmpzVJcDMYN0htbTLs9DA3hnmEPjzhALb7l03bMcACIZ7HLgzhAbb7i0jzfJAnhj76IQZUOsvHZpHBpUwaIQVNFfFGLTEDuFMSZrIWXQBDU0qIKtb1BFy3j++FEAhxQ4NKiCGhpUQR8aVMFbsEAVODSoghoaVEGXA1SBQ4MqcGhQBQ4NquC0HaiCPjSogj40qAKHBlWwKARVUHKAKig5QBU4NKiCGhpUwdY3qAKHBlXg0KAKHBpUQZcDVFHlm2QBoqEVOgFpHO99sDvq31bmt/b5zGUvUvOSRnbt1NPkLfp478ORYhnFyvymcxFJzUsy2UrCgj5WQzCDXHcgIKl5xcBM2eVIL2yIxpi++PTnFUvMZKb8tpWU4lhvvxXR9DnW27+rOa+YIjmHPmpZNH3K6+rLK7ZIqg99tPeRE9E0vb7UvGIku3HqcRE6CR8c6X3sbVJvzm9UXpBJzStWknBon6KZ5n5S84oZ9TV0qEks7xtfXrEHp+0cInVspeZlA9UO/WXvk6C/Ysv7x5OXhuBNso6ROr5S82rKjIAXlZOY7R0QsQCa7R3YjSEvLcEBfy9IHWOpedVH5db37MJBES7YZ3bh4K7kvDQFDu0NqeMsNa96JLGxAulAl8MTUsdZal51yW7Prap6osMLh0TVqTFw59RDNWc8cGhQ5dLU0KAKuhxgNGmAw0mg6rASDg1GkwaooUEVdDlAVZeDb5IFTRUHDg26HJoaGlRBlwOMJg2oOw99d+6uyHMJkvMKPWech44SqeMsNa96sFPoCanjLDWvuuDQ3pA6zlLzqofKz+X4c+4PUfVqmY/cvDQFJYcHpI6x1LyaoNKhjSnMvbnfRbhhmYf8vLQEGyugiuxe93YROgmXfH7xcLD3GN6fuzPSjaXmFTscTnKJ1LGVmpcFsvudW4ofr+SzxS+8u+GD7u2JLig1r5hJoob2PYlV7yc1r5hR2+UYjAfdW14ms7xP/HnFGuoOJ42LVcfiWe3eqnXQR2peMUYyDt2P1e5vTsRTXldfXrFFEjX0ILbFY+t6UvOKiWy1c6MInUQoDi0eadxleNi9aV00UvOKgaQF3aeOgHwIRmpekskedq6rEvSni0f59NEpedS9oeZFoK6G1jQ5PtA2Xiq7HI+611VNkivKcQo/XzaD89AJo3HuVTq0MYVZ667g0mMoxyf8PNkOtV+8aQpj1jqIehhrnZV9oefGVWRr7auF1dESyIFLX9H5eMVfnWuqX+S86zs5dM93EoeT1jtXVbtSVdY7V9UfUlK7KByM9c6vSYu6fP7w8+A61G2sjCNVUaf03Nl6+4ruomoIn1z6OplF4uPOL8mI2RiFW9+QNsnU0HvjcedKEq5VPmf48fZaQ4delYaKDeWi3uhcUd/RSLrLMSw2Oj+rFHX5XOHHN0RwOEkhKc9p0g5tTGGedH5S5dLl84Qf11BBl8MYNaLW8hxNyJ7ky0XoJKSwf+lktP3pp+3LyYvZGPrQbxCrKGLN2wWctlMBc9gn2T70qNhsL0fldpvt5ST7zaMi+S7HsNhsL0Uh6jLP8OMlKXDoEbElXNRb7SWceUhQQ0cL8zYMuhxj2GpfEunSUvOSQLaVX+SlPoH3l7pi+tN/txcR8xhw6ApIEZGUPCTTyqjFooG5mgxtu4rxrL0Q1B3L+4cfB+lByTEFoUQd+sUUE9mz/EIROonYeG9p3tsi8Xm7h5inQPVn27mK57kfkT3Pe2o/g85VsLEiGuZmWtj6rhkv8gtOXfpFfoGt7RpBl6NBvMjPOxF1ed3wzxdj4NANY9uyqLfz8zhzg6CGFgfz0QT60BbYzn+04tK2rpMy2fbJc1iCJd5dPl27P/0y/wExWwCHtkhdUSJme9DlsBwv83NTibP8/+Hz1hKtrFwcFtNMAtgjC52ALjIc2kH8k5+t5NLl/wufr6agD+0odiaIeic/S7/ZQeDQDmMnPzNU1OXPw+enMVqmMMaU4i6GDT44gJF2QWaMMdnOie/6P2CYHfHO5W9e96f/Pfk9LTo3ZMbQh/ZCX8SI2T3Zzolv9/4dl4YYyfp/4CspQBWDp+1YHEJsvOHJfC4HqGLYopAqBGLhLa1ywB9UMWpRSC0N0hkq3XEOjahBKiPLYjZWQBWTuhy4NEhjbNOiikPT9QApTNRiKysqGTBODaGpZKzT1NA4NYSisvam7UPj1OCbqYy0zuEkRA2+mFqedXcKETW4plaJ26QPTU0Nrqitraan7fo3xq3BBo1N0tZOIW4NTbGiIZvnoXFrqINVM2zZvNgrEDZUwclvdZfnoRE2DMNpeerjTbJ7b4G408TbGsv3O1YGHwyB6yRYk+B/74Ps1NhfKh4AAAAASUVORK5CYII="/>
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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"/>
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIkdsb3dUcmFja2VyIiwgInNob3J0X25hbWUiOiAiR2xvd1RyYWNrZXIiLCAic3RhcnRfdXJsIjogIi4vR2xvd1RyYWNrZXIuaHRtbCIsICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLCAiYmFja2dyb3VuZF9jb2xvciI6ICIjZmRmNGZmIiwgInRoZW1lX2NvbG9yIjogIiNhODU1ZjciLCAiaWNvbnMiOiBbeyJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFNQUFBQURBQ0FZQUFBQlMzR3dIQUFBSVMwbEVRVlI0bk8zZFNXOFVSeFRBOFNxcnZ3U0hTSkVpa1lXUTdSaVJzRVNLQkxNWUh6amtBeVlCRWhoamxvUUVESVJBVm1NV2d6RmhpM1BJUjhpeGMyZ0dqWWRaZXFacmVWWHYvNU9laEFDTjMzUy82dGRWMVRPMng0LzlaNFFvWXllQW9HenNCSXd4cGpCbHRMcWo0SFViUHY5UkJrUVIrT2RSOUJobnNEYUNEWWJDK3E5SmloNnpDallZZkhZQUNoOHU5T3ZJeTBBb1BOUXBoUThmdkF5RXd2R3dvdmpoVzJrY0RnSlhIWURDUjBqT3VzRkMweGN3RkQvaWFWeDdUVmVCS0g3RTF1aVdhTjVWSUFvZmtzeDlTelRQSElEaWgxUXpkNE5aVjRFb2ZrZzMweUNZcFFOUS9FaEY3VUhnWWhVSVNGWmg2ejBOeXRVZnFhblZCZXAwQUlvZnFacGF1OVAyQVNoK3BHNWlKMkFPQU5VbXJRSng5VWN1eG5hQmNmc0FGRDl5TTNJUStQZzhBSkNNVVhNQVJnUnk5VXB0aC9oTU1DRFdjQWRnTkNCM08ycWNPUUJVYy8yWllDQXBneDJBVmdBdFhpNkpzaE1NMVZnRmdtckZpL3BuRkVDYjBoaGpXUVdDYXF3Q1FUVTZBRlFyTENNQWVwVjBBS2pHUGdCVVl4OEFxdEVCb0JwekFLakdQZ0JVb3dOQU5lWUFVSTFWSUtoR0I0QnFoYW4zN2RCQWxsZ0ZnbXFzQWtFMU9nQlVZeElNMWJnRmdtcmNBa0UxT2dCVVl3NEExWGdVQXFyUkFhQWFjd0NveGlvUVZLTURRRFhtQUZDdHNEd09EY1dLMkFtazRGQnY5Ny9qL20xMTZkR3VrTG1NSWowL3llemxvdzlwQVNNYzZyMDV0cWpHV1YzYUNsWnMwdk5MaFYxbEFPeHdjSTdDR25iRlk2Rkp6eTgxZHZYb0pnUEFHSE93OTFiandocDJaZW1oczBLVG5sK3FGcXlwZmwyZTV2QlJYT2JGNjJySUwrVllxUFlCOU1ZQlQ4WFZWNzErdnZtbEhxcjNBUTcwM3ZaYVhFMS9qdlQ4Y21DdkhyMWZ4azRpaHYyOWQ0S2Y5R3RMRDJyZmMwdlBMeGVxT3dDZ2NnNFE0K3BxVFArcW5uNStPWVc2VmFEOXZUMVI3M2YzOS9aTVhIbVJubDl1d2RPZ1VVZy81dEx6YzBmVkhPRFQzcnNpVmp2RzVTRTl2eHp4TkdnazBvKzc5UHhjVWRNQlBsbmVLK3FxTnB5UDlQeHl4UndnS3VuSFhucCt6ZkdaNElpa0gzdnArYm1nWWg5ZzMvSjdJdHQ1bFpmOC9ISU9OWE1BWUJTK0dTNHk2Y2RmZW41TjBRR2dtcjJ4ZUN2cklmN3g4b2NpNzY5VGN2UG9lclpQaWRJQm9CcjdBS2doM3hwaEh3QlQ1VndqZEFEVWtHK05NQWVBYXV3RFlLcWNhNlRJK0wzQmxZeHJoRGtBYXNpM1JsZ0Z3bFE1MXdnZEFEWGtXeVBacndMOXR2aTc2RzE4OG91TFZhRElwQjkvNmZrMWxYMEhBQ1poRWh5WjlPTXZQYittVkh3azhvL0ZYMFhleDFaNXljOHY1K0FXQ0tveENZNUkrckdYbnA4TGFqckFuNHUvaUxyTkdNNUhlbjY1WWlNc0d1bkhYWHArYnFqNmV2UzF4WnNpcm1wcml6ZDNwWmhmamtFSGlFTDZNWmVlbnpzTEFsYWlnc1phOTBiVXEreGE5OGF1bFBQTExleGE1N3FlNFQ3Z281Vjl3Yjh1NVZiMzU5ckZMVDIvWEtoWkJRSkdVYkVUUENwdWRhOEh2ZHBWUHkrZi9ISUpWYXRBdzdFZXFNald1OWZuV2xXUm5sOE9vYllEOUdPOSs1UFhJcXRlUDkvOFVnL21BTVo0S3pKWHJ5czl2NVRaOWM3Vk1uWVNrbnl3c3IveDZzdnQ3alZ2aFNVOXY5UXdBTWFZcDlCQ0ZwYjAvRkpoYjNldVpEMEEzbDg1d05lak4zU25lelhiZ1pQOUhDRG5reGRDN3NkUHhTclFuZTZWckUraUw5VnhpMy8rZkFhZkNjWllHbXBEUlFjd3BqUjN1NnQwZ1JsVXh5ditlZk1kMmM4QkJqRUk2dEYwbk96ZDlxVXlkaEtoN1QzN0dTdERZOXpyWEZaVC9NWW9XQVVDSmxFekJ4aU1lNTFMcXE1eWRWWEhKZjc1Q1RvSGlQMDBYcXpZWUJEc3NORzVwUEtKVUpVZG9COGJuUjhaQk1hOE9BN3h6MGVVRHVEa0NBS0pzaHZ0aTJYc0pHTGJjL1p6dGF0Qzl6cy9xTzZDZEFDanR3aTB2dTlCcXVjQWczRy9jMUZWTVZUdk4vNXhqeDFxVjRGR3hRTWxnK0JCNTZMS0ZaOVJ3VGZEcWNRNTc2TURETVZtNS91c3U4Qm01M3V1L2dQQkhHQkViSGEreTNJUVZPOHIvdkdWRkt3Q2paSGJJTWp0L2JoUzJMS01uUU1DNER5UFJnZVk0R0g3UWhaWHpWemVody9NQWFiRXcvYjVwSXVueWovK2NaUWFyQUxWaUsxRUI4RlcrendyUGxPQ2ZZQ3NjVzZuWVE1UTAxYjdYRkpkSUxWOFk3RmJyUlV1RXpQWWZhNGovc25SUisyekZIOU5kSUFaU1M4dTZmbEp3eXJRSFBHb3ZTS3l5S3E4NGgrZmxJSnZoc3NJNTNKMmRJQTU0Ni8yR1ZGZG9Nb24vbkZKTGRnSGFCQ1BoUXlDeCswenJQZlBHVXlDRzRvOUNHTC8vTlN4RVpZOHpsOFQzQUk1aUNmdDVTaFg0U2Z0Wlc1OW1zYmpJNmU1aERqeXh2bWxZSnRrVDFvOWJuMGNZQTdnVUtpaXBQamRLU3oza01uaG5MbERCM0RzYWV1MDE2dXo3OWZYaG8wd0QvRzBkY3BMa1ZhdkcvLzk1UlNzQW5tS1o0NEh3YlBXS1ZaOFBBUWR3R004YTMzclpCQlVyeFAvL2VRWXpBR2dtbjEyNUdRWk80bmN2WDcrMk56N0E4OWIzekRwOVlnT0VNQzhSVXp4KzdkZ1RHbGozNGRwaU9ldGt6TVZjL1gvNCtlZGVWZytFQ01VNXlVTVZvRUN4dCt0RTdXNlFQWC80dWVySWRnSENCemJVd2JCZHVzRTYvMEJvOThCYk95UnFDbTJXOGRIRG9McTcrUG5weVNzTWFVcFREbnFWQ0FLemtWd2R2dndWLzAvYy9nRGUrM0NGeS8zQi80NThqVkxubUZaWTNidUE5aElpYWpWTDNxS1A3aVh0VzYzRDM4NStBOTBBV2p3Y2dDd0R3RFZocjhWd2hxNkFQSzI0NXJQczBCUWJkUm5ndWtDeU5VcmQveDBBS2cyN3B2aDZBTEl6Y2oxbmttclFBd0M1R0pzbWZQZG9GQnQyaHlBYlFLa2JtSU4xL2xtT0c2RmtLcXBGL0M2cTBCMEFxU21WczBXdHVUaURyMW0yUWVnQ3lBVnRXdDExbFVnNWdPUWJxWUw5VHhQZ3pJSUlOWE01VHp2UGtEL0J6RVFJTUhjdCtkTm53VmlYb0RZR3RXZ2k5OFF3eTBSWW1sOEFTNWNaR0c0SlVKWXp1NDhYRDhMUkRlQWIwNXZ1MzE4SnBodUFCKzh6RGQ5UGczS1FJQUxYaGRhWE0wQkpobDhBd3dHMUJGc2RUSDA3d2xtTUdDY0tFdnFJVHJBT01Odm1BR2hpNGc5cFA4QkFXRGcvRFUwUEVnQUFBQUFTVVZPUks1Q1lJST0iLCAic2l6ZXMiOiAiMTkyeDE5MiIsICJ0eXBlIjogImltYWdlL3BuZyJ9LCB7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQWdBQUFBSUFDQVlBQUFEMGVOVDZBQUFXUmtsRVFWUjRuTzNkVjVNbHhaa0c0Q3BGL3dsZENCa2tCRUxDU0xHS0RlR1IxdEIrZGxmci90OEtaR2NZZ3l6akFHbXhZeGpQWUhYQlQ5akwyWXRSRHowOTNjZFdWcHJ2ZWE0VUtBaXFNcytwNzgwdnMwNzNMLzMwL3pxeXU1WDdBZ0JHMXVlK2dPaFd1bHRxejBnTU5NQVhKajBUaFlNUnJPUytnRVlwOWdDTDIrOFpLaFFNVEFCWW5tSVBrSjVRTURBQllER0tQa0IrdTUvRndzQ2NCSURaS2ZvQTVSSUc1clNpcmsxa2NBRHFJd3pNUUFmZ1hvbytRRHVFZ1FPc0dJMDdGSDZBdHUwODU1VytUZ2RBMFFlSVIxZWdpeHNBRkg0QXVpNXdWeURhSWNCUU53dkF6TUlGZ1NnZEFJVWZnRm1FQ1FLdEJ3Q0ZINEJGTkI4RXZwVDdBaEpTL0FGWVZyTzFwTVVPUUxPVEJVQVdUWFlEV3ZvZEFJVWZnSlNhQ2dLdHZBWFF4RTBBVUlWYlhRTWhvUFl0QUlVZmdCeXE3d2JVZkFoUThRY2d0MnByVWEwQm9Ob0JCNkE1VmRhazJyWUFxaHhrQUpwWDNaWkFUWWNBcTdsUUFNS3E1b0JnTGE4Qkt2NEExS0tLRUZENkZvRENEMENOaXQ4U0tQa1FvT0lQUU8yS3JXV2xCb0JpQnd3QTVsUmtUU3N4QUJRNVVBQ3doT0pxVzJsdkFSUjFNUUF3b0tJT0I1YlVBVkQ4QVdoZE1iV3VsQUJReklBQVFHSkYxTHdTZmdlZ2lJRUFnQkZsM3c3STNRRlEvQUdJS21zTnpIa0lVUEVISUxwc25ZQmNIUURGSHdCdXkxSVRjd1FBeFI4QTdqWjZiUnc3QUNqK0FMQy9VV3ZrbUFGQThRZUF5VWFybFdPOUJxajRBOEJzUmprWU9NWmJBSW8vQU13bmVRaFlVWjRCSUo3VVp3REVDd0JZVE5JYW1qSUFLUDRBc0p4a3RUUlZBRkQ4QVdBWVNXcHF6cDhDQmdBeVNkRUJrQ2dBWUZpRDE5YWhmd2RBOFFlQU5BWjlOWERJRG9EaUR3QnBEVlpyYy8wMVFBQWdvNkVDZ05VL0FJeGprSm83eEZzQWlqOEFqR3ZwOHdDMkFBQWdvR1VEZ05VL0FPU3hWQTBlNjg4QkF3QUZXYVlEWVBVUEFIa3RYSXNYUFFTbytBTkFHUlk2RU9nUUlBQUV0RWdBc1BvSGdMTE1YWnQxQUFBZ29Ia0RnTlUvQUpScHJobzl4QzhCQWdDVm1lZDNBQ1FGQUNqYnpHOEVPQU1BQUFITkdnQ3MvZ0dnRGpQVmJCMEFBQWhJQUFDQWdHWjVDMEQ3SHdEcU12VXdvQTRBQUFRMDdUVkFxMzhBcU5QRUxvQU9BQUFFSkFBQVFFQ1REZ0ZxL3dOQTNRN2NCdEFCQUlDQUJBQUFDT2lnQUtEOUR3QnQyTGVtNndBQVFFRHovRGxnQUtBUis3MEZvUDBQQUcyNTUyMEFXd0FBRU5DSzlUNEF4TE8zQXlBT0FFQ2I3cXJ4dGdBQUlLQkpQd1VNQURUS2E0QUFFSkF0QUFBSWFIY0FzQmNBQUcyN1UrdDFBQUFnSUFFQUFBTHlGZ0FBQktRREFBQUI3UVFBYlFBQWlPRlcxL2tkQUFBSXlSWUFBQVRrRUNBQUJLUURBQUFCQ1FBQUVKQUFBQUFCZmFsekNBQUFvcm5sTlVBQUNNaGJBQUFRa0RNQUFCQ1FBQUFBQVFrQUFCQ1FBQUFBQVRrRUNBQUI2UUFBUUVCK0J3QUFBdElCQUlDQUJBQUFDTWdoUUFBSVNBY0FBQUlTQUFBZ0lBRUFBQUx5R2lBQUJLUURBQUFCZVFzQUFBTFNBUUNBZ0FRQUFBaElBQUNBZ0ZZY0FRQ0FlQndDQklDQS9BNEFBQVRrREFBQUJDUUFBRUJBQWdBQUJDUUFBRUJBM2dJQWdJQjBBQUFnSUs4QkFrQkFPZ0FBRUpBQUFBQUJPUVFJQUFIcEFBQkFRQUlBQUFRa0FBQkFRQUlBQUFUa2R3QUFJQ0J2QVFCQVFMWUFBQ0FnQVFBQUFoSUFBQ0FnQVFBQUFuSUlFQUFDMGdFQWdJRDhEZ0FBQktRREFBQUJDUUFBRUpBQUFBQUJlUXNBQUFMU0FRQ0FnQVFBQUFqSWE0QUFFSkFPQUFBRTVCQWdBQVNrQXdBQUFRa0FBQkNRQUFBQUFRa0FBQkRRU25mTElVQUFpTWJ2QUFCQVFMWUFBQ0FnQVFBQUFsckpmUUZRa3VjUFAvRDV2UC9PeVVNM3ZwemlXcGpPZk1IaStsZTNyenNGU0VpTEZJOVpLVExETTE4d3JQN1Y3V3NDQUdFOGYvamJ5WXJJUVU0ZXVxNjRMTWg4UVRvQ0FDSGtLQ1I3S1N5ek0xK1FYbjlTQUtCUnp4VlFSQTV5U25HNWgvbUNjWGtMZ0NhVlhFeTZydnpyRzF2cDQxSDY5Y0VpZEFCb1NvMFA2c2lyUy9NRitmUW50NjhLQUZUdnVjTVBWbGRJOWpwMTZGcVl3bUsrSUQ5YkFGU3ZoV0xTZGUzY3h6U3QzR2NyOTBGY09nQlVxK1VIY0l1clMvTUZaZEVCb0VvdEY1T3VhKy8rV3J1ZnZWcS9QOW9rQUZDZEtBL2JWdTZ6bGZ1WUpzcDkwbzcrbEMwQUt2SnN3SWZzNllyYnkrWUx5dFdmMnI0aUFGQ0ZadzgvRks2WTdEaDk2R3AxUmNWOFFkbHNBVkNGeU1XazYrcTcvOXF1ZDJqUjc1ODZDQUFVejhQMHRsckdvWmJyVE0wNFVEb0JnS0o1aU42dDlQRW8vZnJHWmp3b21RQkFzVHc4OTFmcXVKUjZYYmtaRjByVm45cSs3QkFneFhuMjhIYzhOS2M0ZmVoS01RZk56TmQwSmMwWGRGM1g5YWNGQUFyempHSXlzek1GRkJYek5ic1M1Z3QyMkFLZ0tJckpmSEtQVis3L2ZtMk1GeVVSQUNpR2grTmljbzJiK1ZxTWNhTVVBZ0FBQkNRQVVBU3JvdVdNUFg3bWF6bkdqeEwwcDdjdk9RUklWczhjZnRqRGNDQm5EbDFPZnNqTWZBMW5qUG1DZytnQUFFQkFBZ0JaV1UwT0svVjRtcTloR1U5eTZzL1lBaUNUcHozOGtqbWJvTFZzdnRKSk1WOHdqUTRBQUFUVW45bCtYd2VBMFQxOStMdFdrNG1kUFhScHNGV2wrVXB2eVBtQ1dlZ0FBRUJBQWdDanM1b2N4MURqYkw3R1lad1ptd0FBQUFFSkFJektLbWRjeTQ2MytScVg4V1pNSzMzdUt3Q1M4aDJ2aS9saUxQM1pyWXZlQW1BVVR4MzVudFZOSnE5dHZ6LzNDWFB6bGM4aTh3WHpzZ1VBQUFFSkFJekNhakt2ZWNmZmZPVmwvQm1EQUFBQUFRa0FBQkJRZjNicmdrT0FKUFhVa1VlME13dngydmJGcVlmTHpGYzVacGt2V0pRT0FBQUU1SGNBSUJEZjk3cVlMMUxTQVNDcEo3V1Rpekp0UHN4WFdjd0hLUWtBQUJEUVN0YzVBd2l4K003WHhYeVJoZzRBeVR4NTVGSHR5d0lkTkMvbXEwem1oVlFFQUFBSVNBQUFnSUQ2MTdmTzIyQmljRTlvV3hidmplMExkMzVreG55VmIvZDh3UkIwQUFBZ0lHOEJRRmkrKzNVeFh3eExCd0FBQWhJQUFDQWdBWURCUFhIa01RZktLckF6VCthckR1YUpvUWtBQUJDUVE0QVFtdTkvWGN3WHcvSG5nQ0V3My8rNm1DK0daQXNBQUFJU0FBQWdJQUVBQUFMcTM5aDZ6NmtTQnZPakk0OTdWUWtTK3ZQMk9YOFRnRUY0Q3dDZ0twN1pETU1XQUFBRTVEVkFnSXA0WmpNVUhRQUFDRWdBQUlDQUhBSUVxSXBuTnNQUUFRQ0FnQVFBQUFoSUFBQ0FnQVFBQUFqSTd3QUFWTVF6bTZGNEN3Q2dLcDdaRE1NV0FBQUV0Q0pNQWxURU01dUI2QUFBUUVBQ0FBQUU1QkFnUUZVOHN4bUcxd0FCS3VLWnpWQnNBVENvTjdmZS9uTHVhMkIyNXFzdTVvc2hDUUFBRUpBQUFBQUJDUUFBRUpDM0FDQTAzLys2bUMrR293TUFBQUVKQUFBUVVQL201cHQ2U2d6dWh5Ly84UFBjMThCa2IyMjlkZWVWTXZOVnZ0M3pCVVBRQVFDQWdCd0NoTEI4OSt0aXZoaVdEZ0FBQkNRQUFFQkFBZ0JKdkxYMXBnTkxCZHM3UCthcmJPYUhGQVFBQUFqSW53T0dnSHp2NjJLK1NLRi9hL012anBhU3pOKzkvUGZlTHkvTTIxdi9lMkE3Mlh5Vlo5Sjh3VEpzQVFCQVFBSUFBQVFrQUpDVTltVlpwczJIK1NxTCtTQWxBUUFBQXZKVHdCQ0s3M3RkekJmcDZBQ1EzTnRiZjlIR0xNQ3M4MkMreW1BZVNNM3ZBRUFRdnV0MU1WK2twZ01BQUFFSkFJemlIZTNNck9ZZGYvT1ZsL0ZuREE0QlFnaSs1M1V4WDZTbkE4Qm8zdG42czFWTkJvdU91L25LdzdnekZnRUFBQUlTQUJpVjFjMjRsaDF2OHpVdTQ4MllCQUFBQ0toL1ovTU5wMDBZM1E5ZS9wRS9PNXZZdXdPdUpzMVhla1BPRjh6Q1d3RFFMTi90dXBndnhtVUxnQ3plM1hyRGFpZWhvY2ZYZktWbGZNbEJBQUNBZ1BwM05sN1hkeUtiSHh4OXd0N3l3TjdkVExlYU5GL0RTemxmTUlrT0FGbDUrQTByOVhpYXIyRVpUM0p5Q0JDYTR2dGNGL05GUHYyN0c2LzVCSkxkOTQ4K3FiVzhwUGMyWHg5dE5XbStsamZtZk1GK2JBRlFCQS9ENVl3OWZ1WnJPY2FQRWdnQUFCQ1FBRUF4cklvV2sydmN6TmRpakJ1bEVBQW9pb2ZqZkhLUFYrNy9mbTJNRnlYcDM5MDQ2eEFneGZuKzBhY2NNcHZpdmMzWGlpa201bXU2a3VZTHVrNEhnRUo1V0U1VzJ2aVVkajJsTVQ2VVNBQ2dXQjZhK3l0MVhFcTlydHlNQzZYcTM3TUZRT0VlMTE2KzQxd0Z4Y1I4ZmFHRytTSXVIUUNLNXlGNld5M2pVTXQxcG1ZY0tGMy8zc1laSFFDcThQalJwOE91TE05dG5xMnVtSmd2S0pzT0FOV0krbEN0OWI1cnZlNWxSYjF2NmlNQVVKVm9EOWZhNzdmMjY1OVh0UHVsYmdJQTFZbnlrRzNsUGx1NWoybWkzQ2Z0RUFDb1V1c1AyOWJ1cjdYNzJhdjErNk5OL1RtSEFLbmNZdzBkTmpzZm9KQ1lMeWhEZjI3anRBQkE5UjQ3K2t6MVJlWDg1cGt3eGNSOFFYNENBRTJwc2JCRUxpVG1DL0lSQUdoU0RZVkZJZm1DK1lMeE9RUklrMHAvV0pkK2ZXTXJmVHhLdno1WWhBNEFJWlN3d2xSRVptZStJTDMrM01ZcEFZQXdIanY2N09pRjVmem1hWVZrUWVZTDBoRUFDQ3RsY1ZGRWhtZStZRmo5ZVFHQUFUMmFZY1VHa1Z3UVZoaUlRNEFNeXNNSjB2SDlZa2dDQUlQemtJTGgrVjR4TkFFQUFBTHF6MitjZEFhQUpCNDkrcHp6QURDQUM1dW5yUDRabkE0QXlYaG93Zko4ajBoRkFDQXBEeTlZbk84UEthMzB1YThBZ0gxNVBwT1NEZ0RKWGJTS2dibjUzcEJhZjJIalZZY0FHY1VqUjU5M0tCQm1jSEh6cE9KUGNqb0FqTVpERGFielBXRXNBZ0FBQkNRQU1DcXJHemlZN3dkakVnQVluWWNjM012M2dySDFGOWIvNUJBZ1dUeHk3TWNPQlVMWGRSYzNYbFg4R1YxL1VRQWdvKzhKQVFUM3Z1SlBKcllBQUNBZ0FZQ3NySDZJek9lZm5BUUFzdk1RSkNLZmUzSVRBQ2lDaHlHUitMeFRncFd1Y3dZUVlGeWV1K1NuQTBBeDN0LzRrMVVSemZNNXB4VDkrK3QvRkVVcHluZVAvY1NyZ1RUcGt1SlBRWFFBS0k2SEpDM3l1YVkwQWdCRjhyQ2tKVDdQbE1naFFJRGtQR2Nwanc0QXhicTA4VWVySnFybmMweXBCQUNLNXVGSnpYeCtLWmtBUVBFOFJLbVJ6eTJsRXdBQUlLRCswdm9mbkU2aENnOGYrd2UvRDBBVkxsdjlVNEgrMHZydkJRQ3E4ZkN4ZnhRQ0tOcmxqVDhvL2xUQkZnQlY4WENsWkQ2ZjFFUUFBSUNBQkFDcVk1VkZpWHd1cVkwQVFKVThiQ21KenlNMTZpK3QvODRoUUtyMThMRi9jaWlRckM1di9GN3hwMHI5WlFHQXluMUhDQ0NUSzRvL0ZiTUZBQUFCQ1FCVXp5cU1ISHp1cUowQVFCTThqQm1UenhzdEVBQm9ob2N5WS9BNW94VXJYZWNNSU1Ec1BETnBndzRBVGJteThUdXJNNUx4K2FJbEFnRE44WkFtQlo4cld0TmZXZit0ZmhaTmV1allQL3Q5QUFaeFZmR25RVG9BQUJCUWYyWDlGUjBBbXZYUXNSZDBBVmpLMVkzZld2M1RKQjBBbXViaHpUSjhmbWlaQUVEelBNUlpoTThOclJNQUNNSERuSG40dkJDQkFBQUFBZlZYSFFJa2tBY2RDbVNLYTFiL0JORmZYVHNoQUJES2c4ZFhoUUQyZFczOUZjV2ZNR3dCRUk2SFBQdnh1U0FhQVFBQUFoSUFDTWxxajkxOEhvaElBQ0FzRDMyNnp1ZUF1UHFyYThjZEFpUzBCNCt2T1JRWTFMWDFFNG8vWWVrQUVKNGlFSk41SjdxVlB2Y1ZBR1RnMlVkME9nRFFkZDExcThGUXpEY0lBSENIb2hDRGVZYmIrbXRyeHh3Q2hGMitmWHpkb2NCR1hWOC9ydmpEMytnQUFFQkFBZ0RzWVpYWUp2TUtkeE1BWUIrS1JWdk1KOXlydis0TUFCem9BZWNCcW5kRDhZZDk2UUFBUUVEOTliV2pPZ0F3d1FQSE4zUUJLblZqL1pqVlB4eEFCd0NtVUVUcVpONWdNZ0VBWnFDWTFNVjh3WFFDQU14SVVhbURlWUxaQ0FBQUVGQi9mZTFsaHdCaERnOGMzM1Fvc0ZBMzFvOWEvY09NK2hzQ0FNenRXMEpBY1Q1US9HRXV0Z0JnQVlwTldjd0h6RThBQUlDQUJBQllrRlZuR2N3RExFWUFnQ1VvUG5rWmYxaGNmMlB0aUVPQXNLUnZIZDl5S0hCa0g2eS9yUGpERW5RQUFDQ2cvZ01kQUJqRU4zVUJSblBUNmgrV3BnTUFBMUdVeG1HY1lSZ0NBQXhJY1VyTCtNSncrZy9XRHRzQ2dJRjk4L2kyN1lDQjNWdy9vdmpEZ0hRQUFDQWdBUUFTc0ZvZGx2R0U0UWtBa0lpaU5RempDR2tJQUpDUTRyVWM0d2ZwclBTNXJ3RGdBSjVQa0U1L2MrMDMzZ0tBeE80L2ZzaGJBWFA2Y1AydzFUOGsxTjljRlFCZ0RQZWZFQUptOWVHYTRnK3BPUU1BSTFIVVptT2NZQndDQUl4SWNadk0rTUI0QkFBQUNLaS91ZnByWndCZ1pQZWYrQmZuQWZiNGNPMDNWdjh3SWgwQXlFQ3h1NXZ4Z1BIMUgrb0FRRGJmMEFub1BsTDhJUXNkQUFBSVNBQ0FqS0t2ZnFQZlArUWtBRUJtVVl0ZzFQdUdVdlFmcnY3S0dRQW93RGRPL0d1WTh3QWZyZjFhOFlmTWRBQUFJQ0FCQUFvUlpWVWM1VDZoZFAxSHRnQ2dLRjl2ZUN2Z1k4VWZpcUVEQUlWcHRVaTJlbDlRcS82ajFWL3FBRUNCdm43aTM1cnBCSHk4OWl2Rkh3cWpBd0FBQVFrQVVLaFdWczJ0M0FlMFJnQ0FndFZlUEd1L2ZtaVpBQUNGcTdXSTFucmRFTVZLMXprRENLVGcyUUlsNno5ZS9VWFgrYVpDOGI1MjRxZlZ2Qlh3eWRvdnJmNmhiTDB0QUtoRUxVVzFsdXVFNkFRQXFFanB4YlgwNndPK0lBQUFRRUFDQUZTbTFGVjJxZGNGN0svL2VQWG5YZWNRSUZUbmF5Zit2WmhEZ1orcy9VTHhoN280QkFpMUtxWG9sbklkd0h6NlQyNTNBTHBPRndDcTlOV01uWUJQRlgrb1VkOTF6Z0FBUUVnQ0FGUXUxeXJjNmgvcTFuK3krdExPLzdZRkFCWDc2b24vR0cwcjROTzFueXYrVUM5YkFOQ1NzWXF5NGc5dDJCMEErbXhYQVFDTTRVNnQxd0dBaHFSZW5WdjlRenNFQUdoTXFpS3QrRU5iK2srL09BVFlkUTRDUWpQdUcvQlE0R2VLUDdUaXpoWkEvK25xaTd2L0R3RUFHbkxmaWY5Y09nUjh0dmFTNGcvdE9QQU1nSU9BQU5DbXUycThNd0RRc0dWWDcxYi8wSzcrMHhkZTNQdlBiQU5BWSs1N1pmNnRnTTlXRlg5b3pOUU9nRzBBYU15OHhWenhoK2JjVTl0WExQaUJlM2t1UU92NnoxNzQyWDcvM0xjZkd2U1ZWLzVyNmxiQVgxZGZ0UHFIOXR6VEFUam9FS0J0QUdqUXRPS3UrRU9UOXEzcDNnS0FZQTRxOG9vL3hDSUFBRUJBa3dLQWJRQm8xTjdWdnRVL05PdkFXdDUvOXNML1RQb1hIUWFFaG4zbGxmLysvSytyUDFQOG9WMENBQUFFZEdBQW1IWUd3RFlBQU5ScFlnMWZVZUVCSUo1WjNnS1FFUUNnTGxOcnQ1OENCb0NBL0E0QUFBUTBhd0N3RFFBQWRaaXBadXNBQUVCQTh3UUFYUUFBS052TXRkcHJnQUFRMEx4dkFmU2Qxd1lBb0VSenJlbWRBUUNBZ0JZSkFIWU5BS0FzYzlkbUhRQUFDR2pSQUtBTEFBQmxXS2dtTC9OVHdBNEVBa0JlQ3kvSWJRRUFRRURML2c2QUxnQUE1TEZVQ2RjQkFJQ0FoZ2dBRGdRQ3dMaVdycjNMSEFMY2V5RzJBZ0FndlVFVzNyWUFBQ0NnSVFPQXJRQUFTR3V3V2p0MEIwQUlBSUEwQnEyeEtmNGNzUE1BQURDc3djdTFNd0FBRU5CUWJ3SHNwUXNBQU1OSXNyMmVzZ1BnUEFBQUxDZFpMVTI5QlNBRUFNQmlrdFpRWndBQUlLQ1ZFWGJxblFjQWdQa2s3NkNuT2dTNGx4QUFBTE1aWmZzOHhlOEFIRVFJQUlESlJpdkxZNThCY0NnUUFQWTNhbzNNY1FoUUNBQ0F1NDFlRzNPOUJTQUVBTUJ0V1dwaXp0Y0FoUUFBb3N0V0M4ZDZDK0FnRGdZQ0VGWFdoWEFKUHdTa0V3QkFOTmxyMzVpdkFVNmlFd0JBRkVXVTNoSTZBRHVLR0JBQVNLaVlXbGRTQU9pNmdnWUdBQVpXVkkzTGZRaHdQN1lEQUdoTlVjVy82OHJyQU93b2JxQUFZRUZGMXJSU0EwRFhGVHBnQURDSFltdlpTdTRMbUdKbjRHd0pBRkNUWWd2L2pwSTdBTHNWUDVBQThEZFYxS3hTZmdkZ0ZnNEhBbEM2YXNwcWlXOEJUR0pMQUlBU1ZWUDRkOVN5QmJCWGRRTU5RTE9xckVtMUJvQ3VxM1RBQVdoS3RiV285TGNBcHJFbEFFQU8xUmIrSFRWM0FIYXJmaUlBcUVZVE5hZTJRNENUNkFZQWtGSVRoWDlIVGE4Qnprb1FBR0JJRFpiS2RyWUE5dFBraEFFd3FtWnJTZTJIQUtmUkRRQmdFYzBXL2gydEI0QWRnZ0FBczJpKzhPK0lFZ0IyQ0FJQTdDZE00ZC9SMGxzQTh4QUVBT2k2Z0lWL1I3UU93RjY3SjE0WUFJZ2hiTkhmTFhvQTJFMVhBS0J0Q3Y4dUxmNE93TEowQlFEYW9jd2RRQWRnTW1FQW9ENksvZ3lpSGdKY2hEQUFVQzVGZjA0NkFJc1JCZ0R5VS9TWElBQXNiNzhQb0ZBQU1DekZmbUFDUUJwQ0FjRGlGUHNSQ0FEam1mU0JGZzZBYUJUNXpQNGZtL3U0WUJPN2dlY0FBQUFBU1VWT1JLNUNZSUk9IiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9wbmciLCAicHVycG9zZSI6ICJhbnkgbWFza2FibGUifV19"/>
+<title>GlowTracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --pr:#a855f7;--ph:#9333ea;--pa:#7e22ce;--phl:#f3e8ff;--phl2:#ede9fe;
+  --rose:#ec4899;--roseh:#db2777;--rosehl:#fce7f3;
+  --lilac:#c084fc;--mint:#34d399;--minthl:#d1fae5;
+  --bg:#fdf4ff;--sf:#fff;--sf2:#faf5ff;--sf3:#f3e8ff;
+  --br:rgba(168,85,247,.12);--br2:rgba(168,85,247,.22);
+  --tc:#2d1b4e;--tm:#7c3aed;--tf:#c4b5fd;
+  --ok:#059669;--okhl:#d1fae5;
+  --wn:#d97706;--wnhl:#fef3c7;
+  --er:#dc2626;--erhl:#fee2e2;
+  --sd-sm:0 1px 3px rgba(88,28,135,.07);
+  --sd-md:0 4px 14px rgba(88,28,135,.1),0 2px 4px rgba(88,28,135,.06);
+  --ease:200ms cubic-bezier(.16,1,.3,1);
+  --xs:clamp(.7rem,.65rem + .2vw,.8rem);
+  --sm:clamp(.8rem,.75rem + .25vw,.9rem);
+  --base:clamp(.9rem,.85rem + .2vw,1rem);
+  --md:clamp(1rem,.95rem + .25vw,1.1rem);
+  --lg:clamp(1.1rem,1rem + .5vw,1.3rem);
+  --xl:clamp(1.3rem,1.1rem + .9vw,1.8rem);
+  --s1:.25rem;--s2:.5rem;--s3:.75rem;--s4:1rem;--s5:1.25rem;--s6:1.5rem;--s8:2rem;
+  --rm:.4rem;--rg:.7rem;--rl:1rem;--rx:1.3rem;--rf:999px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:none;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',-apple-system,sans-serif;font-size:var(--base);color:var(--tc);background:var(--bg);min-height:100dvh;line-height:1.55}
+button,input,select,textarea{font:inherit;color:inherit;background:none;border:0}
+button{cursor:pointer}
+h1,h2,h3{text-wrap:balance;line-height:1.2}
+.app{max-width:900px;margin:0 auto;padding:0 var(--s4) 120px;padding-top:calc(env(safe-area-inset-top) + var(--s3))}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:var(--s4);padding-bottom:var(--s4)}
+.brand{display:flex;align-items:center;gap:var(--s3)}
+.logo{width:44px;height:44px;flex-shrink:0;border-radius:12px;background:linear-gradient(160deg,#d8b4fe,#a855f7,#ec4899);display:grid;place-items:center;box-shadow:0 4px 14px rgba(168,85,247,.35);color:#fff}
+.logo svg{width:22px;height:22px}
+.appname{font-size:var(--xl);font-weight:800;line-height:1;background:linear-gradient(135deg,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.appsub{font-size:var(--xs);color:var(--tm);margin-top:2px}
+.daybadge{font-size:var(--xs);font-weight:700;padding:.28rem .7rem;border-radius:var(--rf);background:var(--phl);color:#6b21a8;letter-spacing:.03em}
+.card{background:var(--sf);border:1px solid var(--br);border-radius:var(--rx);box-shadow:var(--sd-md);padding:var(--s5);margin-bottom:var(--s4)}
+.ct{font-size:var(--md);font-weight:700;margin-bottom:2px}
+.cs{font-size:var(--sm);color:var(--tm);margin-bottom:var(--s4)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4)}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s3)}
+.stack{display:grid;gap:var(--s3)}
+.row{display:flex;gap:var(--s3);align-items:center}
+.jb{justify-content:space-between}
+.wrap{flex-wrap:wrap}
+@media(max-width:640px){.g2,.g4{grid-template-columns:1fr 1fr}.app{padding-inline:var(--s3)}}
+@media(max-width:400px){.g4{grid-template-columns:1fr 1fr}}
+.kpi{border:1px solid var(--br);border-radius:var(--rl);padding:var(--s3) var(--s4);box-shadow:var(--sd-sm)}
+.kpi.pu{background:linear-gradient(160deg,#faf5ff,#f3e8ff)}
+.kpi.ro{background:linear-gradient(160deg,#fff0f7,#fce7f3)}
+.kpi.gr{background:linear-gradient(160deg,#f0fdf4,#d1fae5)}
+.kpi.li{background:linear-gradient(160deg,#f5f3ff,#ede9fe)}
+.klb{font-size:var(--xs);font-weight:600;color:var(--tm);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.kv{font-size:clamp(1.5rem,1.1rem + 1.5vw,2.1rem);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kn{font-size:var(--xs);color:var(--tf);margin-top:2px}
+.field{display:grid;gap:3px}
+.lbl{font-size:var(--xs);font-weight:600;color:var(--tm);text-transform:uppercase;letter-spacing:.04em}
+input[type=text],input[type=number],input[type=time],input[type=date],select,textarea{
+  width:100%;padding:.72rem var(--s4);border-radius:var(--rg);border:1px solid var(--br2);
+  background:#fff;color:var(--tc);transition:border-color var(--ease),box-shadow var(--ease);font-size:var(--base)}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--pr);box-shadow:0 0 0 3px rgba(168,85,247,.15)}
+.hint{font-size:var(--xs);color:var(--tf);margin-top:2px}
+.calc{font-size:var(--xs);background:var(--okhl);color:var(--ok);border-radius:var(--rm);padding:.22rem .55rem;display:inline-flex;align-items:center;gap:.3rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--s2);padding:.8rem var(--s5);border-radius:var(--rg);font-size:var(--sm);font-weight:600;transition:all var(--ease);white-space:nowrap}
+.bp{background:linear-gradient(180deg,#c084fc,var(--ph));color:#fff;box-shadow:0 4px 14px rgba(168,85,247,.28)}
+.bp:hover{background:linear-gradient(180deg,var(--ph),var(--pa))}
+.bs{background:var(--sf);color:var(--ph);border:1px solid rgba(168,85,247,.28)}
+.bs:hover{background:var(--phl)}
+.bg_{background:transparent;color:var(--tm);border:1px solid var(--br2)}
+.bg_:hover{background:var(--sf2)}
+.bsm{padding:.45rem var(--s3);font-size:var(--xs)}
+.brose{background:linear-gradient(180deg,#f472b6,var(--roseh));color:#fff;box-shadow:0 4px 14px rgba(236,72,153,.22)}
+.brose:hover{background:linear-gradient(180deg,var(--roseh),#be185d)}
+.pbar{width:100%;height:9px;border-radius:var(--rf);background:var(--sf3);overflow:hidden}
+.pfill{height:100%;border-radius:var(--rf);background:linear-gradient(90deg,#c084fc,var(--rose));transition:width .5s cubic-bezier(.16,1,.3,1)}
+.li_{background:var(--sf);border:1px solid var(--br);border-radius:var(--rl);padding:var(--s3) var(--s4)}
+.li_+.li_{margin-top:var(--s2)}
+.lname{font-weight:600;font-size:var(--md)}
+.lmeta{font-size:var(--sm);color:var(--tm);margin-top:2px}
+.checklist{display:grid;gap:var(--s2)}
+.ci{background:var(--sf);border:1px solid var(--br);border-radius:var(--rl);padding:var(--s3) var(--s4);display:flex;align-items:center;gap:var(--s3)}
+.ci input[type=checkbox]{width:18px;height:18px;flex-shrink:0;accent-color:var(--pr)}
+.fi{border-radius:var(--rl);padding:var(--s3) var(--s4);display:flex;gap:var(--s3);align-items:center;margin-bottom:var(--s4);border:1px solid var(--br)}
+.fi.eating{background:var(--rosehl);border-color:rgba(236,72,153,.2)}
+.fi.fasting{background:var(--minthl);border-color:rgba(52,211,153,.2)}
+.fdot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+.fdot.g{background:var(--ok)}
+.fdot.p{background:var(--rose)}
+.toast{position:fixed;bottom:110px;left:50%;transform:translateX(-50%);background:var(--tc);color:#fff;padding:.7rem 1.2rem;border-radius:var(--rf);font-size:var(--sm);font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,.18);z-index:999;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1}
+.navwrap{position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(253,244,255,.97);backdrop-filter:blur(16px);border-top:1px solid var(--br);padding-bottom:env(safe-area-inset-bottom)}
+.navscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.navscroll::-webkit-scrollbar{display:none}
+.nav{display:flex;padding:6px 8px;gap:2px;min-width:max-content}
+.nb{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 10px;border-radius:var(--rg);color:var(--tm);font-size:.62rem;font-weight:600;transition:all var(--ease);white-space:nowrap;min-width:54px;border:0;background:none;cursor:pointer}
+.nb svg{width:18px;height:18px;flex-shrink:0}
+.nb.active{color:var(--ph);background:var(--phl)}
+.tab{display:none;animation:fadeUp .2s ease both}
+.tab.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.divider{height:1px;background:var(--br);margin:var(--s4) 0}
+.empty{text-align:center;padding:var(--s8);color:var(--tf);font-size:var(--sm)}
+.itabs{display:flex;gap:var(--s2);margin-bottom:var(--s4);background:var(--sf2);padding:4px;border-radius:var(--rl)}
+.itb{flex:1;padding:.6rem var(--s3);border-radius:var(--rg);font-size:var(--sm);font-weight:600;color:var(--tm);transition:all var(--ease);text-align:center;border:0;background:none;cursor:pointer}
+.itb.active{background:#fff;color:var(--ph);box-shadow:var(--sd-sm)}
+.itc{display:none}
+.itc.active{display:block}
+.pill{display:inline-flex;align-items:center;border-radius:var(--rf);padding:.25rem .65rem;font-size:var(--xs);font-weight:600}
+.pp{background:var(--phl);color:#6b21a8}
+.pr_{background:var(--rosehl);color:#9d174d}
+.pg{background:var(--okhl);color:#065f46}
+.notif-bar{background:linear-gradient(135deg,var(--phl2),var(--rosehl));border:1px solid var(--br);border-radius:var(--rl);padding:var(--s3) var(--s4);margin-bottom:var(--s4);display:flex;align-items:center;justify-content:space-between;gap:var(--s3);flex-wrap:wrap}
+.mgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:var(--s6)}
+.mdlbl{font-size:.6rem;text-align:center;color:var(--tf);font-weight:600;padding-bottom:3px}
+.mday{aspect-ratio:1;border-radius:var(--rm);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.6rem;font-weight:700}
+.mday.nd{background:var(--sf2);color:var(--tf)}
+.mday.s5{background:linear-gradient(160deg,#e9d5ff,#a855f7);color:#fff}
+.mday.s4{background:linear-gradient(160deg,#f3e8ff,#c084fc);color:#5b21b6}
+.mday.s3{background:linear-gradient(160deg,#fce7f3,#f472b6);color:#831843}
+.mday.s2{background:linear-gradient(160deg,#fdf4ff,#e879f9);color:#701a75}
+.mday.s1{background:linear-gradient(160deg,#fdf4ff,#f0abfc);color:#86198f}
+.mday.s0{background:#f0ede8;color:var(--tf)}
+.mday.emp{background:transparent}
+.chwrap{position:relative;width:100%}
+.we{display:flex;align-items:center;justify-content:space-between;padding:var(--s3) var(--s4);border-radius:var(--rg);background:var(--sf2);border:1px solid var(--br)}
+.we+.we{margin-top:var(--s2)}
+</style>
+</head>
+<body>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+      </div>
+      <div>
+        <div class="appname">GlowTracker</div>
+        <div class="appsub">IF · Wellness · Fitness</div>
+      </div>
+    </div>
+    <div id="dayBadge" class="daybadge" style="display:none">Day 1</div>
+  </header>
+
+  <!-- DASHBOARD -->
+  <div id="tab-dashboard" class="tab active">
+    <div id="notifBar" class="notif-bar">
+      <span style="font-size:var(--sm);font-weight:600">🔔 Enable meal reminders</span>
+      <button class="btn bp bsm" id="btnNotif">Allow notifications</button>
+    </div>
+    <div id="setupCard" class="card">
+      <div class="ct">Set your start date</div>
+      <div class="cs">Pick the day you began your IF journey.</div>
+      <div class="g2" style="align-items:end;gap:var(--s3)">
+        <div class="field"><label class="lbl" for="startDate">Start date</label><input type="date" id="startDate"/></div>
+        <div style="display:flex;gap:var(--s2);flex-wrap:wrap">
+          <button class="btn bp bsm" id="btnToday">Today</button>
+          <button class="btn bs bsm" id="btnSaveStart">Save</button>
+        </div>
+      </div>
+    </div>
+    <div id="fastStatus" class="fi eating">
+      <div class="fdot p" id="fastDot"></div>
+      <div><strong id="fastLabel">Eating window</strong><div class="hint" id="fastSub">Loading…</div></div>
+    </div>
+    <div class="g4" style="margin-bottom:var(--s4)">
+      <div class="kpi pu"><div class="klb">Cal In</div><div class="kv" id="kCalIn">0</div><div class="kn">Goal ≤<span id="kCalGoal">1600</span></div></div>
+      <div class="kpi gr"><div class="klb">Cal Burnt</div><div class="kv" id="kCalOut">0</div><div class="kn">Activity</div></div>
+      <div class="kpi ro"><div class="klb">Deficit</div><div class="kv" id="kDeficit">0</div><div class="kn">kcal</div></div>
+      <div class="kpi li"><div class="klb">Stars</div><div class="kv" id="kStars">0/5</div></div>
+    </div>
+    <div class="g2">
+      <div class="card" style="margin-bottom:0">
+        <div class="ct">Daily goals</div>
+        <div class="cs">Complete all 5 for a perfect day.</div>
+        <div style="margin-bottom:var(--s3)">
+          <div class="row jb" style="margin-bottom:var(--s2)"><span style="font-size:var(--sm)">Progress</span><strong id="goalPct">0%</strong></div>
+          <div class="pbar"><div class="pfill" id="goalBar" style="width:0%"></div></div>
+        </div>
+        <div class="checklist" id="dashChecklist"></div>
+      </div>
+      <div class="card" style="margin-bottom:0">
+        <div class="ct">Weight log</div>
+        <div class="cs">Log every morning.</div>
+        <div class="g2" style="gap:var(--s3);margin-bottom:var(--s4)">
+          <div class="kpi pu"><div class="klb">Current</div><div class="kv" id="kWeight">—</div><div class="kn">kg</div></div>
+          <div class="kpi gr"><div class="klb">Lost</div><div class="kv" id="kLost">—</div><div class="kn">kg</div></div>
+        </div>
+        <div class="field" style="margin-bottom:var(--s3)">
+          <label class="lbl" for="wInput">Log weight (kg)</label>
+          <div class="row"><input type="number" id="wInput" min="30" max="300" step="0.1" placeholder="75.0"/><button class="btn bp bsm" id="btnLogW">Save</button></div>
+        </div>
+        <div id="wHistory"></div>
+      </div>
+    </div>
+    <div class="card"><div class="ct">Recent history</div><div class="cs">Last 14 days at a glance.</div><div id="recentHistory"></div></div>
+  </div>
+
+  <!-- FOOD -->
+  <div id="tab-food" class="tab">
+    <div class="g2">
+      <div class="card" style="margin-bottom:0">
+        <div class="ct">Add food</div>
+        <div class="cs">Common foods with calorie lookup.</div>
+        <div class="stack">
+          <div class="field"><label class="lbl" for="foodSel">Food item</label><select id="foodSel"></select></div>
+          <div class="g2" style="gap:var(--s3)">
+            <div class="field"><label class="lbl" for="foodQty">Servings</label><input type="number" id="foodQty" min="0.5" step="0.5" value="1"/></div>
+            <div class="field"><label class="lbl" for="mealType">Meal</label><select id="mealType"><option>Breakfast</option><option>Lunch</option><option>Dinner</option><option>Snack</option></select></div>
+          </div>
+          <div id="foodPreview" class="calc" style="display:none">0 kcal</div>
+          <button class="btn bp" id="btnAddFood">Add to today</button>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:0">
+        <div class="ct">Custom entry</div>
+        <div class="cs">For meals not in the list.</div>
+        <div class="stack">
+          <div class="field"><label class="lbl" for="cName">Meal name</label><input type="text" id="cName" placeholder="Avocado toast…"/></div>
+          <div class="g2" style="gap:var(--s3)">
+            <div class="field"><label class="lbl" for="cCal">Calories</label><input type="number" id="cCal" min="1" step="1" placeholder="280"/></div>
+            <div class="field"><label class="lbl" for="cQty">Servings</label><input type="number" id="cQty" min="0.5" step="0.5" value="1"/></div>
+          </div>
+          <div class="field"><label class="lbl" for="cMeal">Meal</label><select id="cMeal"><option>Breakfast</option><option>Lunch</option><option>Dinner</option><option>Snack</option></select></div>
+          <div style="display:flex;gap:var(--s2);flex-wrap:wrap">
+            <button class="btn bs bsm" id="btnSaveCustom">Save to list</button>
+            <button class="btn bp bsm" id="btnAddCustom">Add to today</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card"><div class="ct">Today's food log</div><div class="cs" id="foodSummary">Nothing logged yet.</div><div id="foodLog"></div></div>
+  </div>
+
+  <!-- ACTIVITY -->
+  <div id="tab-activity" class="tab">
+    <div class="g2">
+      <div class="card" style="margin-bottom:0">
+        <div class="ct">Log activity</div>
+        <div class="cs">Any activity counts — walk, yoga, gym, dance.</div>
+        <div class="stack">
+          <div class="field"><label class="lbl" for="actType">Activity type</label>
+            <select id="actType">
+              <option>Walking</option><option>Running</option><option>Yoga</option>
+              <option>Cycling</option><option>Swimming</option><option>Dancing</option>
+              <option>Gym workout</option><option>Home workout</option><option>Other</option>
+            </select>
+          </div>
+          <div class="g2" style="gap:var(--s3)">
+            <div class="field"><label class="lbl" for="actMins">Duration (min)</label><input type="number" id="actMins" min="1" step="1" value="30"/></div>
+            <div class="field"><label class="lbl" for="actIntensity">Intensity</label>
+              <select id="actIntensity"><option value="low">Low</option><option value="med" selected>Moderate</option><option value="high">High</option></select>
+            </div>
+          </div>
+          <div class="field"><label class="lbl">Estimated burn</label><div id="actCalc" class="calc">Enter details above</div></div>
+          <div class="field"><label class="lbl" for="actOver">Override calories (tracker)</label><input type="number" id="actOver" min="1" step="1" placeholder="From fitness band"/></div>
+          <button class="btn bp" id="btnAddAct">Log activity</button>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:0">
+        <div class="ct">Activity summary</div>
+        <div class="cs">Today's sessions.</div>
+        <div class="g2" style="gap:var(--s3);margin-bottom:var(--s3)">
+          <div class="kpi gr"><div class="klb">Burnt today</div><div class="kv" id="actTotalCal">0</div><div class="kn">kcal</div></div>
+          <div class="kpi pu"><div class="klb">Sessions</div><div class="kv" id="actTotalSess">0</div></div>
+        </div>
+        <div id="actLog"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOALS / STARS -->
+  <div id="tab-stars" class="tab">
+    <div class="g2">
+      <div class="card" style="margin-bottom:0">
+        <div class="ct">Today's goals</div>
+        <div class="cs">Tick each one off as you go.</div>
+        <div class="checklist" id="starList"></div>
+        <div class="divider"></div>
+        <div class="row jb"><span style="font-size:var(--sm)">Stars today</span><strong id="starsTodayCount">0 / 5</strong></div>
+      </div>
+      <div class="card" style="margin-bottom:0">
+        <div class="ct">Stats &amp; streak</div>
+        <div class="cs">Aim for 4+ star days.</div>
+        <div class="g2" style="gap:var(--s3);margin-bottom:var(--s3)">
+          <div class="kpi li"><div class="klb">Total stars</div><div class="kv" id="sTotal">0</div></div>
+          <div class="kpi pu"><div class="klb">Best streak</div><div class="kv" id="sBest">0</div><div class="kn">days 4+★</div></div>
+        </div>
+        <div class="g2" style="gap:var(--s3)">
+          <div class="kpi"><div class="klb">Days logged</div><div class="kv" id="sDays">0</div></div>
+          <div class="kpi ro"><div class="klb">Weight lost</div><div class="kv" id="sLost">—</div><div class="kn">kg</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card"><div class="ct">Recent stars</div><div class="cs">Last 14 days.</div><div id="starHist"></div></div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div id="tab-progress" class="tab">
+    <div class="itabs">
+      <button class="itb active" data-inner="graphs">📈 Graphs</button>
+      <button class="itb" data-inner="monthly">📅 Calendar</button>
+    </div>
+    <div id="inner-graphs" class="itc active">
+      <div class="card"><div class="ct">Weight over time</div><div class="cs">Target: gradual, steady loss.</div><div class="chwrap"><canvas id="cwt" height="200"></canvas></div></div>
+      <div class="card"><div class="ct">Calories in vs out</div><div class="cs">Purple = eaten · Green = burnt</div><div class="chwrap"><canvas id="ccal" height="200"></canvas></div></div>
+      <div class="card"><div class="ct">Daily deficit</div><div class="cs">Positive = burnt more than eaten.</div><div class="chwrap"><canvas id="cdef" height="180"></canvas></div></div>
+      <div class="card"><div class="ct">Stars per day</div><div class="cs">Consistency is everything.</div><div class="chwrap"><canvas id="cstars" height="180"></canvas></div></div>
+    </div>
+    <div id="inner-monthly" class="itc">
+      <div class="card" style="margin-bottom:var(--s4)">
+        <div class="ct">Legend</div>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--s3);font-size:var(--xs)">
+          <span><span style="background:linear-gradient(160deg,#e9d5ff,#a855f7);border-radius:4px;padding:2px 8px;font-weight:700;color:#fff">5★</span> Perfect</span>
+          <span><span style="background:linear-gradient(160deg,#f3e8ff,#c084fc);border-radius:4px;padding:2px 8px;font-weight:700;color:#5b21b6">4★</span> Great</span>
+          <span><span style="background:linear-gradient(160deg,#fce7f3,#f472b6);border-radius:4px;padding:2px 8px;font-weight:700;color:#831843">3★</span> Good</span>
+          <span><span style="background:#f0ede8;border-radius:4px;padding:2px 8px;font-weight:700;color:#888">—</span> No data</span>
+        </div>
+      </div>
+      <div id="monthCal"></div>
+    </div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div id="tab-settings" class="tab">
+    <div class="card">
+      <div class="ct">Fasting window</div>
+      <div class="cs">Default: 12:00 PM – 8:00 PM (16:8 protocol).</div>
+      <div class="g2" style="margin-bottom:var(--s4)">
+        <div class="field"><label class="lbl" for="fsStart">Eating starts</label><input type="time" id="fsStart" value="12:00"/></div>
+        <div class="field"><label class="lbl" for="fsEnd">Eating ends</label><input type="time" id="fsEnd" value="20:00"/></div>
+      </div>
+      <div id="fastPreview" class="calc" style="margin-bottom:var(--s4)">16:8 — fasting 16h, eating 8h</div>
+      <button class="btn bp" id="btnSaveFast">Save fasting window</button>
+    </div>
+    <div class="card">
+      <div class="ct">Meal reminders</div>
+      <div class="cs">You'll be notified to log your meals at these times (when app is open or browser supports background notifications).</div>
+      <div id="notifStatus" style="font-size:var(--sm);margin-bottom:var(--s3);padding:var(--s2) var(--s3);border-radius:var(--rg);background:var(--sf2)">Notification status: unknown</div>
+      <button class="btn bs bsm" id="btnReqNotif" style="margin-bottom:var(--s4)">🔔 Request notification permission</button>
+      <div class="stack" style="margin-bottom:var(--s4)" id="reminderFields"></div>
+      <div style="display:flex;gap:var(--s2);flex-wrap:wrap;margin-bottom:var(--s3)">
+        <button class="btn bs bsm" id="btnAddReminder">+ Add reminder</button>
+        <button class="btn bp bsm" id="btnSaveReminders">Save reminders</button>
+      </div>
+      <div class="hint">Reminders fire while the app is open. For best results on iPhone, keep the app open during eating hours.</div>
+    </div>
+    <div class="card">
+      <div class="ct">Profile</div>
+      <div class="cs">Used for calorie burn estimates.</div>
+      <div class="g2" style="margin-bottom:var(--s4)">
+        <div class="field"><label class="lbl" for="pWeight">Body weight (kg)</label><input type="number" id="pWeight" min="30" max="300" step="0.5" placeholder="75"/></div>
+        <div class="field"><label class="lbl" for="pCal">Calorie target</label><input type="number" id="pCal" min="800" max="4000" step="50" placeholder="1600"/></div>
+      </div>
+      <div class="field" style="margin-bottom:var(--s4)">
+        <label class="lbl" for="pWater">Daily water goal (L)</label>
+        <input type="number" id="pWater" min="1" max="6" step="0.5" placeholder="2.5"/>
+      </div>
+      <button class="btn bp" id="btnSaveProfile">Save profile</button>
+    </div>
+    <div class="card">
+      <div class="ct">Plan start date</div>
+      <div class="cs">Resets the day counter.</div>
+      <div class="g2" style="align-items:end">
+        <div class="field"><label class="lbl" for="sStartDate">Start date</label><input type="date" id="sStartDate"/></div>
+        <button class="btn bp" id="btnSaveStart2">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="navwrap" aria-label="Main navigation">
+  <div class="navscroll">
+    <div class="nav">
+      <button class="nb active" data-tab="dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Home</button>
+      <button class="nb" data-tab="food"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>Food</button>
+      <button class="nb" data-tab="activity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Activity</button>
+      <button class="nb" data-tab="stars"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Goals</button>
+      <button class="nb" data-tab="progress"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Progress</button>
+      <button class="nb" data-tab="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</button>
+    </div>
+  </div>
+</nav>
+
+<script>
+const SK='glowTracker_v1';
+const MET_BASE={Walking:3.5,Running:9.8,Yoga:2.5,Cycling:6.8,Swimming:7.0,Dancing:5.5,'Gym workout':5.0,'Home workout':4.5,Other:4.0};
+const INTENSITY={low:.8,med:1.0,high:1.3};
+const FOODS=[
+  {n:'Oats porridge (1 bowl)',c:150},{n:'Greek yoghurt (1 cup)',c:130},
+  {n:'Boiled eggs (2)',c:156},{n:'Egg whites omelette (3)',c:120},
+  {n:'Avocado (half)',c:120},{n:'Brown rice (1 cup cooked)',c:215},
+  {n:'White rice (1 cup cooked)',c:205},{n:'Grilled chicken breast (150g)',c:248},
+  {n:'Chicken salad (1 bowl)',c:280},{n:'Paneer tikka (100g)',c:265},
+  {n:'Dal tadka (1 cup)',c:180},{n:'Vegetable curry (1 cup)',c:140},
+  {n:'Chapati (1)',c:100},{n:'Idli (2)',c:116},{n:'Dosa (1 plain)',c:130},
+  {n:'Sambar (1 cup)',c:140},{n:'Curd rice (1 cup)',c:200},
+  {n:'Fruit salad (1 bowl)',c:120},{n:'Mixed nuts (30g)',c:175},
+  {n:'Green tea (unsweetened)',c:2},{n:'Black coffee',c:5},
+  {n:'Banana (1)',c:105},{n:'Apple (1)',c:80},{n:'Orange (1)',c:62},
+  {n:'Whole wheat bread (2 slices)',c:160},{n:'Peanut butter (1 tbsp)',c:95}
+];
+const STAR_GOALS=[
+  {k:'fasting',l:'Honoured the full fasting window'},
+  {k:'nosnack',l:'No snacking after cut-off time'},
+  {k:'water',l:'Drank 2.5 L of water today'},
+  {k:'sleep',l:'Slept 7+ hours last night'},
+  {k:'weight',l:'Logged weight this morning'}
+];
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+function load(){try{const r=localStorage.getItem(SK);if(r)return JSON.parse(r);}catch(e){}
+  return{startDate:'',fs:'12:00',fe:'20:00',bw:75,ct:1600,wg:2.5,reminders:['13:00','19:00'],foods:[...FOODS],daily:{},weights:[]};}
+function save(){localStorage.setItem(SK,JSON.stringify(S));}
+let S=load();
+if(!S.reminders)S.reminders=['13:00','19:00'];
+if(!S.wg)S.wg=2.5;
+if(!S.foods||!S.foods.length)S.foods=[...FOODS];
+
+function today(){return new Date().toISOString().slice(0,10);}
+function ensureDay(d){if(!S.daily[d])S.daily[d]={foods:[],acts:[],stars:{fasting:false,nosnack:false,water:false,sleep:false,weight:false}};return S.daily[d];}
+function getDay(){return ensureDay(today());}
+function sum(a,f){return a.reduce((t,x)=>t+f(x),0);}
+function sc(s){return Object.values(s||{}).filter(Boolean).length;}
+function rStar(n,t=5){return Array.from({length:t}).map((_,i)=>`<span style="color:${i<n?'#a855f7':'#e9d5ff'};font-size:1rem">${i<n?'★':'☆'}</span>`).join('');}
+
+// TOAST
+function toast(m){const el=document.getElementById('toast');el.textContent=m;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2400);}
+
+// NOTIFICATIONS
+let notifTimers=[];
+function updateNotifStatus(){
+  const el=document.getElementById('notifStatus');
+  if(!('Notification' in window)){el.textContent='Notifications not supported in this browser.';el.style.color='var(--wn)';return;}
+  if(Notification.permission==='granted'){el.textContent='✅ Notifications enabled';el.style.color='var(--ok)';}
+  else if(Notification.permission==='denied'){el.textContent='❌ Notifications blocked — please enable in browser settings';el.style.color='var(--er)';}
+  else{el.textContent='⏳ Permission not yet requested';el.style.color='var(--wn)';}
+  const nb=document.getElementById('notifBar');
+  if(Notification.permission==='granted'&&nb)nb.style.display='none';
+}
+function scheduleReminders(){
+  notifTimers.forEach(clearTimeout);notifTimers=[];
+  if(!('Notification' in window)||Notification.permission!=='granted')return;
+  const now=new Date();
+  S.reminders.forEach(t=>{
+    const[h,m]=t.split(':').map(Number);
+    const target=new Date(now.getFullYear(),now.getMonth(),now.getDate(),h,m,0);
+    let diff=target-now;
+    if(diff<0)diff+=86400000;
+    const tid=setTimeout(()=>{
+      new Notification('GlowTracker 🌸',{body:"Time to log your meal! Don't forget to stay within your fasting window.",icon:'',tag:'meal-reminder-'+t});
+      scheduleReminders();
+    },diff);
+    notifTimers.push(tid);
+  });
+}
+document.getElementById('btnNotif').addEventListener('click',()=>{
+  if(!('Notification' in window)){toast('Notifications not supported.');return;}
+  Notification.requestPermission().then(p=>{updateNotifStatus();if(p==='granted'){scheduleReminders();toast('Reminders set! ✅');document.getElementById('notifBar').style.display='none';}else toast('Permission not granted.');});
+});
+document.getElementById('btnReqNotif').addEventListener('click',()=>{
+  if(!('Notification' in window)){toast('Not supported.');return;}
+  Notification.requestPermission().then(p=>{updateNotifStatus();if(p==='granted'){scheduleReminders();toast('Notifications enabled ✅');}});
+});
+
+// REMINDER FIELDS
+function renderReminderFields(){
+  const host=document.getElementById('reminderFields');
+  host.innerHTML=S.reminders.map((t,i)=>`
+    <div class="row" style="gap:var(--s2)">
+      <div class="field" style="flex:1"><label class="lbl">Reminder ${i+1}</label><input type="time" class="rem-time" data-i="${i}" value="${t}"/></div>
+      <button class="btn bg_ bsm" style="margin-top:18px" onclick="removeReminder(${i})">✕</button>
+    </div>`).join('');
+}
+function removeReminder(i){S.reminders.splice(i,1);save();renderReminderFields();scheduleReminders();toast('Reminder removed.');}
+document.getElementById('btnAddReminder').addEventListener('click',()=>{S.reminders.push('12:00');save();renderReminderFields();});
+document.getElementById('btnSaveReminders').addEventListener('click',()=>{
+  document.querySelectorAll('.rem-time').forEach(inp=>{const i=Number(inp.dataset.i);S.reminders[i]=inp.value;});
+  save();scheduleReminders();toast('Reminders saved ✅');
+});
+
+// FASTING
+function updateFast(){
+  const now=new Date(),mins=now.getHours()*60+now.getMinutes();
+  const[sh,sm]=S.fs.split(':').map(Number),[eh,em]=S.fe.split(':').map(Number);
+  const st=sh*60+sm,en=eh*60+em;
+  const inW=mins>=st&&mins<en;
+  const fi=document.getElementById('fastStatus');
+  fi.className='fi '+(inW?'eating':'fasting');
+  document.getElementById('fastDot').className='fdot '+(inW?'p':'g');
+  document.getElementById('fastLabel').textContent=inW?'Eating window open 🌸':'Fasting — window closed 💜';
+  if(inW){const r=en-mins;document.getElementById('fastSub').textContent=`Closes at ${S.fe} · ${r} min remaining`;}
+  else{let w=mins<st?st-mins:(st+1440-mins);document.getElementById('fastSub').textContent=`Opens at ${S.fs} · ${w<60?w+'m':Math.floor(w/60)+'h '+w%60+'m'} away`;}
+}
+function eatHrs(){const[sh,sm]=S.fs.split(':').map(Number),[eh,em]=S.fe.split(':').map(Number);let d=(eh*60+em)-(sh*60+sm);if(d<0)d+=1440;return d/60;}
+function updateFastPrev(){
+  const s=document.getElementById('fsStart').value,e=document.getElementById('fsEnd').value;
+  if(!s||!e)return;
+  const[s1,s2]=s.split(':').map(Number),[e1,e2]=e.split(':').map(Number);
+  let d=(e1*60+e2)-(s1*60+s2);if(d<0)d+=1440;
+  const eh=Math.round(d/60),fh=24-eh;
+  document.getElementById('fastPreview').textContent=`${fh}:${eh} — fasting ${fh}h, eating ${eh}h`;
+}
+
+// FOOD
+function buildFoodSel(){
+  document.getElementById('foodSel').innerHTML=S.foods.map((f,i)=>`<option value="${i}">${f.n} — ${f.c} kcal</option>`).join('');
+  updateFoodPrev();
+}
+function updateFoodPrev(){
+  const i=Number(document.getElementById('foodSel').value),q=Number(document.getElementById('foodQty').value)||1,f=S.foods[i];
+  if(!f)return;const el=document.getElementById('foodPreview');el.style.display='inline-flex';el.textContent=Math.round(f.c*q)+' kcal';
+}
+function renderFoodLog(){
+  const d=getDay(),t=sum(d.foods,f=>Number(f.tc||0));
+  document.getElementById('foodSummary').textContent=d.foods.length?`${d.foods.length} item${d.foods.length>1?'s':''} · ${t} kcal · goal ${S.ct} kcal`:'Nothing logged yet.';
+  if(!d.foods.length){document.getElementById('foodLog').innerHTML='<div class="empty">No food logged yet today.</div>';return;}
+  document.getElementById('foodLog').innerHTML=d.foods.map((f,i)=>`<div class="li_ row jb wrap" style="gap:var(--s2)"><div><div class="lname">${f.n}</div><div class="lmeta">${f.meal} · ${f.qty} serving${f.qty>1?'s':''}</div></div><div class="row" style="gap:var(--s3)"><strong>${f.tc} kcal</strong><button class="btn bg_ bsm" onclick="rmFood(${i})">✕</button></div></div>`).join('');
+}
+window.rmFood=function(i){getDay().foods.splice(i,1);save();renderFoodLog();renderDash();toast('Removed.');};
+
+// ACTIVITY
+const MET_KEYS=['Walking','Running','Yoga','Cycling','Swimming','Dancing','Gym workout','Home workout','Other'];
+function updateActCalc(){
+  const t=document.getElementById('actType').value,m=Number(document.getElementById('actMins').value)||0,iv=document.getElementById('actIntensity').value;
+  const met=(MET_BASE[t]||4)*INTENSITY[iv];
+  const c=Math.round(met*S.bw*(m/60));
+  document.getElementById('actCalc').textContent=`~${c} kcal (${S.bw} kg · ${m} min · ${iv})`;
+}
+function renderActLog(){
+  const d=getDay();
+  const total=sum(d.acts,a=>Number(a.cal||0));
+  document.getElementById('actTotalCal').textContent=total;
+  document.getElementById('actTotalSess').textContent=d.acts.length;
+  if(!d.acts.length){document.getElementById('actLog').innerHTML='<div class="empty">No activity logged today.</div>';return;}
+  document.getElementById('actLog').innerHTML=d.acts.map((a,i)=>`<div class="li_ row jb wrap" style="gap:var(--s2)"><div><div class="lname">${a.type}</div><div class="lmeta">${a.mins} min · ${a.intensity} intensity</div></div><div class="row" style="gap:var(--s3)"><strong>${a.cal} kcal${a.ov?' (tracker)':''}</strong><button class="btn bg_ bsm" onclick="rmAct(${i})">✕</button></div></div>`).join('');
+}
+window.rmAct=function(i){getDay().acts.splice(i,1);save();renderActLog();renderDash();toast('Removed.');};
+
+// DASHBOARD
+function renderDash(){
+  const d=getDay();
+  const ci=sum(d.foods,f=>Number(f.tc||0)),co=sum(d.acts,a=>Number(a.cal||0)),stars=sc(d.stars);
+  document.getElementById('kCalIn').textContent=ci;
+  document.getElementById('kCalGoal').textContent=S.ct;
+  document.getElementById('kCalOut').textContent=co;
+  const def=co-ci;
+  document.getElementById('kDeficit').textContent=def;
+  document.getElementById('kDeficit').style.color=def>=0?'var(--ok)':'var(--er)';
+  document.getElementById('kStars').textContent=stars+'/5';
+  const pct=Math.round(stars/5*100);
+  document.getElementById('goalPct').textContent=pct+'%';
+  document.getElementById('goalBar').style.width=pct+'%';
+  document.getElementById('dashChecklist').innerHTML=STAR_GOALS.map(g=>`<div class="ci">${d.stars[g.k]?'✅':'⬜'} ${g.l}</div>`).join('');
+  const lw=S.weights.length?S.weights[S.weights.length-1].w:null;
+  document.getElementById('kWeight').textContent=lw||'—';
+  if(S.weights.length>=2){const lost=(S.weights[0].w-S.weights[S.weights.length-1].w).toFixed(1);document.getElementById('kLost').textContent=lost;document.getElementById('kLost').style.color=Number(lost)>0?'var(--ok)':'var(--er)';}
+  else document.getElementById('kLost').textContent='—';
+  renderWHistory();renderRecent();updateDayBadge();updateFast();
+}
+function renderWHistory(){
+  const e=S.weights.slice(-4).reverse();
+  document.getElementById('wHistory').innerHTML=e.map(x=>`<div class="we"><span>${x.d}</span><strong>${x.w} kg</strong></div>`).join('');
+}
+function renderRecent(){
+  const keys=Object.keys(S.daily).sort().reverse().slice(0,14);
+  if(!keys.length){document.getElementById('recentHistory').innerHTML='<div class="empty">No history yet. Start logging!</div>';return;}
+  document.getElementById('recentHistory').innerHTML=keys.map(date=>{
+    const d=S.daily[date];
+    const ci=sum(d.foods||[],f=>Number(f.tc||0)),co=sum(d.acts||[],a=>Number(a.cal||0)),s=sc(d.stars||{});
+    const def=co-ci;
+    return`<div class="li_ row jb wrap" style="gap:var(--s2)"><div><div class="lname">${date}</div><div class="lmeta">${ci} kcal in · ${co} kcal out · deficit ${def}</div></div><div>${rStar(s)}</div></div>`;
+  }).join('');
+}
+function updateDayBadge(){
+  const b=document.getElementById('dayBadge'),sc2=document.getElementById('setupCard');
+  if(!S.startDate){b.style.display='none';if(sc2)sc2.style.display='';return;}
+  if(sc2)sc2.style.display='none';
+  const diff=Math.floor((new Date(today()+'T00:00:00')-new Date(S.startDate+'T00:00:00'))/86400000);
+  b.textContent='Day '+Math.max(1,diff+1);b.style.display='';
+}
+
+// STARS
+function renderStars(){
+  const d=getDay();
+  document.getElementById('starList').innerHTML=STAR_GOALS.map(g=>`<label class="ci"><input type="checkbox" data-star="${g.k}"${d.stars[g.k]?' checked':''}/> ${g.l}</label>`).join('');
+  document.querySelectorAll('[data-star]').forEach(cb=>{
+    cb.addEventListener('change',()=>{getDay().stars[cb.dataset.star]=cb.checked;save();renderDash();renderStars();renderStarStats();toast(cb.checked?'⭐ Goal achieved!':'Goal unmarked.');});
+  });
+  const s=sc(d.stars);
+  document.getElementById('starsTodayCount').textContent=s+' / 5';
+  renderStarHist();renderStarStats();
+}
+function renderStarHist(){
+  const keys=Object.keys(S.daily).sort().reverse().slice(0,14);
+  if(!keys.length){document.getElementById('starHist').innerHTML='<div class="empty">No history yet.</div>';return;}
+  document.getElementById('starHist').innerHTML=keys.map(date=>`<div class="li_ row jb"><span class="lname">${date}</span><div>${rStar(sc(S.daily[date].stars||{}))}</div></div>`).join('');
+}
+function renderStarStats(){
+  const total=Object.values(S.daily).reduce((a,d)=>a+sc(d.stars||{}),0);
+  document.getElementById('sTotal').textContent=total;
+  let best=0,cur=0;
+  Object.keys(S.daily).sort().forEach(dt=>{const s=sc(S.daily[dt].stars||{});if(s>=4){cur++;best=Math.max(best,cur);}else cur=0;});
+  document.getElementById('sBest').textContent=best;
+  document.getElementById('sDays').textContent=Object.keys(S.daily).length;
+  if(S.weights.length>=2){const lost=(S.weights[0].w-S.weights[S.weights.length-1].w).toFixed(1);document.getElementById('sLost').textContent=lost;}
+  else document.getElementById('sLost').textContent='—';
+}
+
+// CHARTS
+let CH={};
+function destroyChart(id){if(CH[id]){CH[id].destroy();delete CH[id];}}
+function renderCharts(){
+  const keys=Object.keys(S.daily).sort().slice(-30);
+  const lb=keys.map(k=>k.slice(5));
+  const ci=keys.map(k=>sum(S.daily[k].foods||[],f=>Number(f.tc||0)));
+  const co=keys.map(k=>sum(S.daily[k].acts||[],a=>Number(a.cal||0)));
+  const def=keys.map((_,i)=>co[i]-ci[i]);
+  const st=keys.map(k=>sc(S.daily[k].stars||{}));
+  const wo=S.weights.slice(-30);
+  const base={responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.05)'}}}};
+  destroyChart('w');
+  if(wo.length){CH['w']=new Chart(document.getElementById('cwt'),{type:'line',data:{labels:wo.map(x=>x.d.slice(5)),datasets:[{data:wo.map(x=>x.w),borderColor:'#a855f7',backgroundColor:'rgba(168,85,247,.08)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#a855f7'}]},options:{...base,scales:{...base.scales,y:{...base.scales.y,suggestedMin:60,suggestedMax:80}}}});}
+  else{document.getElementById('cwt').parentElement.innerHTML='<div class="empty">Log weight to see this chart.</div>';}
+  destroyChart('c');
+  CH['c']=new Chart(document.getElementById('ccal'),{type:'bar',data:{labels:lb,datasets:[{label:'Eaten',data:ci,backgroundColor:'rgba(168,85,247,.7)',borderRadius:4},{label:'Burnt',data:co,backgroundColor:'rgba(52,211,153,.65)',borderRadius:4}]},options:{...base,plugins:{legend:{display:true,position:'top'}}}});
+  destroyChart('d');
+  CH['d']=new Chart(document.getElementById('cdef'),{type:'bar',data:{labels:lb,datasets:[{data:def,backgroundColor:def.map(v=>v>=0?'rgba(52,211,153,.7)':'rgba(236,72,153,.6)'),borderRadius:4}]},options:base});
+  destroyChart('s');
+  CH['s']=new Chart(document.getElementById('cstars'),{type:'bar',data:{labels:lb,datasets:[{data:st,backgroundColor:st.map(s=>s>=5?'#a855f7':s>=4?'#c084fc':s>=3?'#ec4899':'#f9a8d4'),borderRadius:4}]},options:{...base,scales:{...base.scales,y:{...base.scales.y,max:5,ticks:{stepSize:1}}}}});
+}
+
+// MONTHLY
+function renderMonthly(){
+  const host=document.getElementById('monthCal');
+  const all=Object.keys(S.daily).sort();
+  if(!all.length){host.innerHTML='<div class="empty">Start logging to see your calendar.</div>';return;}
+  const months={};all.forEach(d=>{const ym=d.slice(0,7);if(!months[ym])months[ym]=[];months[ym].push(d);});
+  let html='';
+  Object.keys(months).sort().reverse().forEach(ym=>{
+    const[y,m]=ym.split('-').map(Number);
+    const first=new Date(y,m-1,1).getDay(),dim=new Date(y,m,0).getDate();
+    html+=`<div class="card"><div style="font-size:var(--md);font-weight:700;margin-bottom:var(--s3)">${MONTHS[m-1]} ${y}</div><div class="mgrid">`;
+    DAYS.forEach(d=>html+=`<div class="mdlbl">${d}</div>`);
+    for(let i=0;i<first;i++)html+=`<div class="mday emp"></div>`;
+    for(let day=1;day<=dim;day++){
+      const ds=`${ym}-${String(day).padStart(2,'0')}`,dd=S.daily[ds];
+      let cls='nd',tx='';
+      if(dd){const s=sc(dd.stars||{});cls='s'+s;tx=s>0?s+'★':'';}
+      html+=`<div class="mday ${cls}">${day}<br><small>${tx}</small></div>`;
+    }
+    html+=`</div></div>`;
+  });
+  host.innerHTML=html;
+}
+
+// SETTINGS
+function renderSettings(){
+  document.getElementById('fsStart').value=S.fs;
+  document.getElementById('fsEnd').value=S.fe;
+  document.getElementById('pWeight').value=S.bw;
+  document.getElementById('pCal').value=S.ct;
+  document.getElementById('pWater').value=S.wg;
+  if(S.startDate)document.getElementById('sStartDate').value=S.startDate;
+  updateFastPrev();renderReminderFields();updateNotifStatus();
+}
+
+// EVENTS
+document.getElementById('btnToday').addEventListener('click',()=>{document.getElementById('startDate').value=today();});
+document.getElementById('btnSaveStart').addEventListener('click',()=>{const v=document.getElementById('startDate').value;if(!v){toast('Pick a date.');return;}S.startDate=v;save();renderDash();toast('Start date saved!');});
+document.getElementById('btnLogW').addEventListener('click',()=>{
+  const w=Number(document.getElementById('wInput').value);if(!w||w<30||w>400){toast('Enter a valid weight.');return;}
+  const td=today(),idx=S.weights.findIndex(e=>e.d===td);
+  if(idx>=0)S.weights[idx].w=w;else S.weights.push({d:td,w});
+  save();renderDash();renderStarStats();document.getElementById('wInput').value='';toast('Weight '+w+' kg saved ✅');
+});
+document.getElementById('foodSel').addEventListener('change',updateFoodPrev);
+document.getElementById('foodQty').addEventListener('input',updateFoodPrev);
+document.getElementById('btnAddFood').addEventListener('click',()=>{
+  const i=Number(document.getElementById('foodSel').value),q=Number(document.getElementById('foodQty').value)||1,ml=document.getElementById('mealType').value,f=S.foods[i];
+  if(!f){toast('Select a food.');return;}
+  getDay().foods.push({n:f.n,qty:q,meal:ml,tc:Math.round(f.c*q)});save();renderFoodLog();renderDash();toast(f.n+' added ✅');
+});
+document.getElementById('btnSaveCustom').addEventListener('click',()=>{
+  const n=document.getElementById('cName').value.trim(),c=Number(document.getElementById('cCal').value);
+  if(!n||!c){toast('Enter name and calories.');return;}
+  S.foods.push({n,c});save();buildFoodSel();toast(n+' saved to list ✅');
+  document.getElementById('cName').value='';document.getElementById('cCal').value='';
+});
+document.getElementById('btnAddCustom').addEventListener('click',()=>{
+  const n=document.getElementById('cName').value.trim(),c=Number(document.getElementById('cCal').value),q=Number(document.getElementById('cQty').value)||1,ml=document.getElementById('cMeal').value;
+  if(!n||!c){toast('Enter name and calories.');return;}
+  S.foods.push({n,c});getDay().foods.push({n,qty:q,meal:ml,tc:Math.round(c*q)});
+  save();buildFoodSel();renderFoodLog();renderDash();toast(n+' added ✅');
+  document.getElementById('cName').value='';document.getElementById('cCal').value='';
+});
+document.getElementById('actType').addEventListener('change',updateActCalc);
+document.getElementById('actMins').addEventListener('input',updateActCalc);
+document.getElementById('actIntensity').addEventListener('change',updateActCalc);
+document.getElementById('btnAddAct').addEventListener('click',()=>{
+  const type=document.getElementById('actType').value,mins=Number(document.getElementById('actMins').value)||0,iv=document.getElementById('actIntensity').value;
+  if(!mins){toast('Enter duration.');return;}
+  const met=(MET_BASE[type]||4)*INTENSITY[iv],auto=Math.round(met*S.bw*(mins/60));
+  const ov=document.getElementById('actOver').value,cal=(ov&&Number(ov)>0)?Number(ov):auto;
+  getDay().acts.push({type,mins,intensity:iv,cal,ov:!!(ov&&Number(ov)>0)});
+  save();renderActLog();renderDash();document.getElementById('actOver').value='';toast(`${type} logged — ${cal} kcal 💪`);
+});
+document.getElementById('fsStart').addEventListener('input',updateFastPrev);
+document.getElementById('fsEnd').addEventListener('input',updateFastPrev);
+document.getElementById('btnSaveFast').addEventListener('click',()=>{
+  const s=document.getElementById('fsStart').value,e=document.getElementById('fsEnd').value;
+  if(!s||!e){toast('Enter both times.');return;}
+  S.fs=s;S.fe=e;save();renderDash();toast('Fasting window saved ✅');
+});
+document.getElementById('btnSaveProfile').addEventListener('click',()=>{
+  const w=Number(document.getElementById('pWeight').value),c=Number(document.getElementById('pCal').value),wg=Number(document.getElementById('pWater').value);
+  if(!w||!c){toast('Enter weight and target.');return;}
+  S.bw=w;S.ct=c;if(wg)S.wg=wg;save();updateActCalc();toast('Profile saved ✅');
+});
+document.getElementById('btnSaveStart2').addEventListener('click',()=>{
+  const v=document.getElementById('sStartDate').value;if(!v){toast('Pick a date.');return;}
+  S.startDate=v;save();renderDash();toast('Start date updated ✅');
+});
+
+// TAB SWITCHING
+function switchTab(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  document.querySelector(`.nb[data-tab="${name}"]`).classList.add('active');
+  if(name==='dashboard')renderDash();
+  if(name==='food'){buildFoodSel();renderFoodLog();}
+  if(name==='activity'){renderActLog();updateActCalc();}
+  if(name==='stars')renderStars();
+  if(name==='progress'){renderCharts();renderMonthly();}
+  if(name==='settings')renderSettings();
+}
+document.querySelectorAll('.nb').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+document.querySelectorAll('.itb').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const t=b.dataset.inner;
+    document.querySelectorAll('.itb').forEach(x=>x.classList.toggle('active',x.dataset.inner===t));
+    document.querySelectorAll('.itc').forEach(x=>x.classList.toggle('active',x.id==='inner-'+t));
+    if(t==='graphs')renderCharts();
+    if(t==='monthly')renderMonthly();
+  });
+});
+
+// INIT
+buildFoodSel();renderDash();updateActCalc();updateNotifStatus();scheduleReminders();
+setInterval(updateFast,60000);
+</script>
+</body>
+</html>
