@@ -148,10 +148,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 /* cal remaining */
 .cal-rem{display:flex;align-items:center;justify-content:space-between;background:#F5E8FF;border-radius:10px;padding:9px 12px;margin-bottom:10px;margin-top:-4px}
+
+/* ── motivational ── */
+.quote-card{background:linear-gradient(135deg,#C44BC8,#7C3AED);border-radius:12px;padding:14px 16px;margin-bottom:12px;position:relative;overflow:hidden}
+.quote-card::before{content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;background:rgba(255,255,255,0.1);border-radius:50%}
+.quote-card .qt{font-size:14px;color:#fff;font-style:italic;line-height:1.5;margin-bottom:6px}
+.quote-card .qa{font-size:11px;color:rgba(255,255,255,0.75);text-align:right}
+.motivational-msg{background:#F5E8FF;border-left:3px solid #C44BC8;border-radius:0 8px 8px 0;padding:10px 12px;margin-bottom:12px;font-size:13px;color:#2C1A3A;line-height:1.5}
+.streak-warning{background:#FDE8F5;border:1.5px solid #C44BC8;border-radius:12px;padding:12px 14px;margin-bottom:12px;display:flex;align-items:center;gap:10px;font-size:13px;color:#A0196A}
+.streak-warning i{font-size:22px;color:#C44BC8;flex-shrink:0}
+#confetti-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:500;display:none}
+.milestone-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-120px);background:#2C1A3A;color:#fff;padding:14px 20px;border-radius:16px;font-size:14px;font-weight:500;z-index:600;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);max-width:340px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.25)}
+.milestone-toast.show{transform:translateX(-50%) translateY(0)}
+.milestone-toast .mt-icon{font-size:28px;display:block;margin-bottom:4px}
+
 </style>
 </head>
 <body>
 
+<canvas id="confetti-canvas"></canvas>
+<div class="milestone-toast" id="milestone-toast"></div>
 <!-- ONBOARDING -->
 <div class="onboard" id="onboard">
   <div class="onboard-card">
@@ -179,6 +195,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div class="hero">
     <h1>Hello, <span id="hero-name">lovely</span> 🌸</h1>
     <p id="hero-date">Today is a great day</p>
+  </div>
+
+  <div class="quote-card" id="quote-card">
+    <div class="qt" id="quote-text">Loading your daily spark...</div>
+    <div class="qa" id="quote-author"></div>
+  </div>
+  <div class="motivational-msg" id="motiv-msg"></div>
+  <div class="streak-warning" id="streak-warning" style="display:none">
+    <i class="ti ti-heart"></i>
+    <span id="streak-warning-text"></span>
   </div>
 
   <!-- Water hero -->
@@ -243,6 +269,39 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div class="sec-title">Lunch / dinner</div><div id="fl-main"></div>
   <div class="sec-title">Proteins</div><div id="fl-protein"></div>
   <div class="sec-title">Snacks & drinks</div><div id="fl-snacks"></div>
+
+  <div class="sec-title">Add your own food</div>
+  <div class="card">
+    <div style="font-size:13px;color:#9B7AB0;margin-bottom:10px">Can't find something? Add it here.</div>
+    <div class="input-row">
+      <input class="fi" type="text" id="custom-food-name" placeholder="Food name" style="flex:2">
+    </div>
+    <div class="input-row">
+      <div style="flex:1">
+        <div style="font-size:12px;color:#7C4AB0;margin-bottom:4px">Calories (kcal)</div>
+        <input class="fi" type="number" id="custom-food-cal" placeholder="e.g. 180">
+      </div>
+      <div style="flex:1">
+        <div style="font-size:12px;color:#7C4AB0;margin-bottom:4px">Portion / notes</div>
+        <input class="fi" type="text" id="custom-food-portion" placeholder="e.g. 1 bowl">
+      </div>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-primary" style="flex:2" onclick="addCustomFood()">
+        <i class="ti ti-plus"></i> Add to today
+      </button>
+      <button class="btn" style="flex:1;font-size:12px;border-color:#E8C8F5;color:#7C4AB0" onclick="saveToLibrary()">
+        <i class="ti ti-bookmark"></i> Save
+      </button>
+    </div>
+    <div id="custom-food-msg" style="font-size:12px;color:#1D9E75;margin-top:6px;display:none">
+      <i class="ti ti-check"></i> <span></span>
+    </div>
+  </div>
+  <div id="fl-custom-saved" style="display:none">
+    <div class="sec-title">My saved foods</div>
+    <div id="fl-custom-list"></div>
+  </div>
 </div>
 
 <!-- ACTIVITY -->
@@ -483,6 +542,7 @@ function renderHome(){
   else{remEl.textContent=Math.abs(rem)+' over';remEl.style.color='#E24B4A';}
 
   renderWeekStars();
+  renderMotivational();
 }
 
 function renderWeekStars(){
@@ -510,6 +570,7 @@ function renderFood(){
   const el=document.getElementById('logged-meals');
   el.innerHTML=td.meals.length===0?'<p style="font-size:13px;color:#C4A8D4;margin-bottom:8px">No meals logged yet today</p>':
     td.meals.map((m,i)=>'<div class="logged-item"><span>'+m.n+'</span><span style="display:flex;align-items:center;gap:8px"><span class="badge b-pink">'+m.c+' kcal</span><button onclick="removeFood('+i+')" style="border:none;background:none;cursor:pointer;color:#C4A8D4;font-size:20px">×</button></span></div>').join('');
+  renderCustomSaved();
   ['breakfast','main','protein','snacks'].forEach(cat=>{
     document.getElementById('fl-'+cat).innerHTML=FOODS[cat].map(f=>'<div class="food-item" data-name="'+f.n.toLowerCase()+'" onclick=\'addFood('+JSON.stringify(f.n)+','+f.c+')\' ><div><div class="fname">'+f.n+'</div><div class="fport">'+f.p+'</div></div><div class="fcal">+'+f.c+' kcal</div></div>').join('');
   });
@@ -632,7 +693,216 @@ function renderMore(){
     renderHome();
   }
 })();
+
+// ══ CUSTOM FOOD ══
+function addCustomFood(n,c){
+  if(n===undefined){
+    n=(document.getElementById('custom-food-name').value||'').trim();
+    c=parseInt(document.getElementById('custom-food-cal').value)||0;
+    if(!n){alert('Enter a food name');return;}
+    if(!c){alert('Enter calories');return;}
+    document.getElementById('custom-food-name').value='';
+    document.getElementById('custom-food-cal').value='';
+    document.getElementById('custom-food-portion').value='';
+  }
+  getTD().meals.push({n,c});save();renderFood();
+  showCustomMsg('Added to today!');
+}
+function saveToLibrary(){
+  const n=(document.getElementById('custom-food-name').value||'').trim();
+  const c=parseInt(document.getElementById('custom-food-cal').value)||0;
+  const p=(document.getElementById('custom-food-portion').value||'').trim()||'1 serving';
+  if(!n){alert('Enter a food name');return;}
+  if(!c){alert('Enter calories');return;}
+  if(!S.customFoods)S.customFoods=[];
+  if(S.customFoods.find(f=>f.n===n)){showCustomMsg('Already saved!');return;}
+  S.customFoods.push({n,c,p});save();
+  document.getElementById('custom-food-name').value='';
+  document.getElementById('custom-food-cal').value='';
+  document.getElementById('custom-food-portion').value='';
+  renderCustomSaved();showCustomMsg('Saved to your list!');
+}
+function showCustomMsg(txt){
+  const el=document.getElementById('custom-food-msg');
+  el.querySelector('span').textContent=txt;
+  el.style.display='block';
+  setTimeout(()=>el.style.display='none',2500);
+}
+function renderCustomSaved(){
+  if(!S.customFoods||S.customFoods.length===0){
+    document.getElementById('fl-custom-saved').style.display='none';return;
+  }
+  document.getElementById('fl-custom-saved').style.display='block';
+  document.getElementById('fl-custom-list').innerHTML=S.customFoods.map((f,i)=>
+    '<div class="food-item" data-name="'+f.n.toLowerCase()+'">' +
+    '<div onclick=\'addCustomFood('+JSON.stringify(f.n)+','+f.c+')\' style="flex:1;cursor:pointer">' +
+    '<div class="fname">'+f.n+'</div><div class="fport">'+f.p+'</div></div>' +
+    '<div style="display:flex;align-items:center;gap:8px">' +
+    '<div class="fcal" onclick=\'addCustomFood('+JSON.stringify(f.n)+','+f.c+')\' style="cursor:pointer">+'+f.c+' kcal</div>' +
+    '<button onclick="deleteCustomFood('+i+')" style="border:none;background:none;cursor:pointer;color:#C4A8D4;font-size:18px">×</button>' +
+    '</div></div>'
+  ).join('');
+}
+function deleteCustomFood(i){S.customFoods.splice(i,1);save();renderCustomSaved();}
+
+// ══ MOTIVATIONAL ══
+const QUOTES=[
+  {q:"A little progress each day adds up to big results.",a:"Unknown"},
+  {q:"Take care of your body. It's the only place you have to live.",a:"Jim Rohn"},
+  {q:"You don't have to be perfect. You just have to show up.",a:"Unknown"},
+  {q:"Drink your water. Your skin, your kidneys, and your future self will thank you.",a:"WellnessMe 💧"},
+  {q:"Wellness is not a destination. It's a daily practice.",a:"Unknown"},
+  {q:"Small steps every day. That's all it takes.",a:"WellnessMe 🌸"},
+  {q:"Your body hears everything your mind says. Be kind to both.",a:"Unknown"},
+  {q:"You are allowed to be both a work in progress and a masterpiece.",a:"Unknown"},
+  {q:"Hydration is self-care. Drink up, queen.",a:"WellnessMe 😄"},
+  {q:"Every healthy choice is a vote for the person you want to become.",a:"Unknown"},
+  {q:"Rest is productive. Recovery is progress.",a:"Unknown"},
+  {q:"Nourish to flourish.",a:"Unknown 🌿"},
+  {q:"You don't need to earn your rest. You just need it.",a:"Unknown"},
+  {q:"Consistency beats perfection every single time.",a:"WellnessMe"},
+  {q:"Drink water like it's your job. Because honestly, it kind of is.",a:"WellnessMe 😂"},
+  {q:"Your health is an investment, not an expense.",a:"Unknown"},
+  {q:"A healthy outside starts from the inside.",a:"Robert Urich"},
+  {q:"Be gentle with yourself. You are a child of the universe.",a:"Unknown 🌸"},
+  {q:"Glowing skin? Drink more water. Better energy? Drink more water. World peace? Drink more water.",a:"WellnessMe 😄"},
+  {q:"One good choice leads to another. Start with water.",a:"WellnessMe"},
+  {q:"You are stronger than your excuses.",a:"Unknown"},
+  {q:"Move your body because you love it, not because you hate it.",a:"Unknown"},
+  {q:"Good things take time. So does great health.",a:"WellnessMe 🌸"},
+  {q:"Today's effort is tomorrow's energy.",a:"Unknown"},
+  {q:"You've got this. One sip at a time.",a:"WellnessMe 💧"},
+];
+function getDailyQuote(){
+  return QUOTES[Math.floor(Date.now()/86400000)%QUOTES.length];
+}
+function getMotivationalMessage(){
+  const wg=(cfg('waterGoal')||3)*1000;
+  const cg=cfg('calGoal')||1600;
+  const td=getTD();
+  const wml=td.water||0;
+  const totalCal=td.meals.reduce((s,m)=>s+m.c,0);
+  const streak=calcStreak();
+  const hour=new Date().getHours();
+  const waterDays=Object.values(S.days).filter(d=>(d.water||0)>=wg).length;
+  const actDays=Object.values(S.days).filter(d=>d.activities&&d.activities.length>0).length;
+  const pct=Math.round(wml/wg*100);
+
+  if(streak>=14) return{e:'🌟',m:streak+" day streak! You've built something beautiful. Keep it going."};
+  if(streak>=7) return{e:'💫',m:"7 perfect days in a row. Your body is loving you back right now."};
+  if(streak>=3) return{e:'🔥',m:streak+" days strong! Don't break this — you're on a roll."};
+  if(pct>=100) return{e:'💧',m:"Water goal done! Your skin, kidneys, and energy levels are all celebrating."};
+  if(pct>=75) return{e:'💪',m:"Almost there on water — just "+(Math.round((wg-wml)/100)/10).toFixed(1)+"L to go. Finish it!"};
+  if(waterDays>=30) return{e:'🏆',m:"30 days of hitting your water goal. That is a genuine habit now."};
+  if(waterDays>=7) return{e:'💧',m:waterDays+" days of good hydration! Your body has a new normal."};
+  if(actDays>=10) return{e:'🎯',m:"You've been active "+actDays+" days. Movement is becoming part of who you are."};
+  if(td.activities&&td.activities.length>0) return{e:'✨',m:"Activity logged! Every bit of movement counts. You're doing great."};
+  if(totalCal>0&&totalCal<=cg) return{e:'🌿',m:"Eating on track today. Nourishing your body is an act of self-love."};
+  if(hour<10) return{e:'🌅',m:"Good morning! Start with a big glass of water before anything else."};
+  if(hour>=20) return{e:'🌙',m:"Wind down with one more glass of water before bed. Your body will thank you."};
+  return{e:'🌸',m:"Every small healthy choice today is a gift to your future self."};
+}
+function checkStreakWarning(){
+  const el=document.getElementById('streak-warning');
+  if(!el)return;
+  const hour=new Date().getHours();
+  const streak=calcStreak();
+  const td=getTD();
+  const wg=(cfg('waterGoal')||3)*1000;
+  const cg=cfg('calGoal')||1600;
+  const totalCal=td.meals.reduce((s,m)=>s+m.c,0);
+  const unmet=[];
+  if((td.water||0)<wg)unmet.push('water ('+((wg-(td.water||0))/1000).toFixed(1)+'L to go)');
+  if(totalCal===0||totalCal>cg)unmet.push('calorie goal');
+  if(hour>=18&&unmet.length>0){
+    el.style.display='flex';
+    document.getElementById('streak-warning-text').textContent=
+      streak>=3
+        ? "Don't break your "+streak+"-day streak 💕 Still needed: "+unmet.join(', ')+'.'
+        : "Almost done for today! Still to go: "+unmet.join(', ')+".";
+  } else {
+    el.style.display='none';
+  }
+}
+const SHOWN_MS=new Set(JSON.parse(localStorage.getItem('shown_ms_w')||'[]'));
+function saveMS(){localStorage.setItem('shown_ms_w',JSON.stringify([...SHOWN_MS]));}
+function checkMilestones(){
+  const wg=(cfg('waterGoal')||3)*1000;
+  const waterDays=Object.values(S.days).filter(d=>(d.water||0)>=wg).length;
+  const streak=calcStreak();
+  const actDays=Object.values(S.days).filter(d=>d.activities&&d.activities.length>0).length;
+  const ms=[
+    {id:'water1',check:waterDays>=1,icon:'💧',msg:"First water goal hit! Hydration journey begins. 🌸"},
+    {id:'water7',check:waterDays>=7,icon:'💦',msg:"7 days of hitting your water goal! Your skin is glowing."},
+    {id:'water30',check:waterDays>=30,icon:'🏆',msg:"30 water goal days! That's a real habit. So proud of you."},
+    {id:'act1',check:actDays>=1,icon:'✨',msg:"First activity logged! Movement is medicine. Keep going."},
+    {id:'act7',check:actDays>=7,icon:'🌟',msg:"7 active days! Your body is thanking you."},
+    {id:'streak3',check:streak>=3,icon:'🔥',msg:"3-day streak! Three perfect days in a row. Beautiful."},
+    {id:'streak7',check:streak>=7,icon:'💫',msg:"7-day streak! A whole perfect week. You're incredible."},
+    {id:'streak14',check:streak>=14,icon:'👑',msg:"14 days straight! This is who you are now. 🌸"},
+  ];
+  for(const m of ms){
+    if(m.check&&!SHOWN_MS.has(m.id)){
+      SHOWN_MS.add(m.id);saveMS();
+      showMilestoneToast(m.icon,m.msg);
+      launchConfetti();
+      break;
+    }
+  }
+}
+function showMilestoneToast(icon,msg){
+  const el=document.getElementById('milestone-toast');
+  if(!el)return;
+  el.innerHTML='<span style="font-size:28px;display:block;margin-bottom:4px">'+icon+'</span>'+msg;
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),4500);
+}
+function launchConfetti(){
+  const canvas=document.getElementById('confetti-canvas');
+  if(!canvas)return;
+  canvas.style.display='block';
+  canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+  const ctx=canvas.getContext('2d');
+  const colors=['#C44BC8','#E879A0','#7C3AED','#F5A8F0','#fff','#FAC8F5'];
+  const pieces=Array.from({length:120},()=>({
+    x:Math.random()*canvas.width,y:-10,
+    w:8+Math.random()*8,h:6+Math.random()*6,
+    color:colors[Math.floor(Math.random()*colors.length)],
+    vx:(Math.random()-0.5)*6,vy:3+Math.random()*5,
+    r:Math.random()*Math.PI*2,vr:(Math.random()-0.5)*0.2,life:1
+  }));
+  let frame=0;
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.vy+=0.1;p.life-=0.008;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);
+      ctx.globalAlpha=Math.max(0,p.life);
+      ctx.fillStyle=p.color;
+      ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+      ctx.restore();
+    });
+    frame++;
+    if(frame<200&&pieces.some(p=>p.life>0))requestAnimationFrame(draw);
+    else{ctx.clearRect(0,0,canvas.width,canvas.height);canvas.style.display='none';}
+  }
+  draw();
+}
+function renderMotivational(){
+  try{const q=getDailyQuote();
+    const qEl=document.getElementById('quote-text');
+    const aEl=document.getElementById('quote-author');
+    if(qEl)qEl.textContent='"'+q.q+'"';
+    if(aEl)aEl.textContent='— '+q.a;
+  }catch(e){}
+  try{const m=getMotivationalMessage();
+    const mEl=document.getElementById('motiv-msg');
+    if(mEl)mEl.innerHTML='<span style="font-size:18px;margin-right:6px">'+m.e+'</span>'+m.m;
+  }catch(e){}
+  try{checkStreakWarning();}catch(e){}
+  try{checkMilestones();}catch(e){}
+}
+
 </script>
 </body>
 </html>
-
